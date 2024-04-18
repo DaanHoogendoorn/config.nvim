@@ -519,6 +519,12 @@ require('lazy').setup({
               callback = vim.lsp.buf.clear_references,
             })
           end
+
+          if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+            map('<leader>th', function()
+              vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())
+            end, '[T]oggle Inlay [H]int')
+          end
         end,
       })
 
@@ -549,7 +555,14 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
+        tsserver = {},
+        phpactor = {},
+        emmet_language_server = {
+          filetypes = { 'html', 'css', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'php', 'blade' },
+        },
+        cssls = {},
+        html = {},
+        css_variables = {},
         --
 
         lua_ls = {
@@ -581,6 +594,14 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'prettier',
+        'prettierd',
+        'phpactor',
+        'tsserver',
+        'emmet-language-server',
+        'cssls',
+        'html',
+        'css-variables-language-server',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -626,6 +647,14 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        php = { 'prettierd', 'prettier', 'phpactor' },
+        javascript = { 'prettierd', 'prettier' },
+        typescript = { 'prettierd', 'prettier' },
+        javascriptreact = { 'prettierd', 'prettier' },
+        typescriptreact = { 'prettierd', 'prettier' },
+        css = { 'prettierd', 'prettier' },
+        scss = { 'prettierd', 'prettier' },
+        xml = { 'prettierd', 'prettier' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -803,7 +832,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'php', 'phpdoc' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
