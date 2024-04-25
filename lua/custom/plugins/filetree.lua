@@ -15,7 +15,7 @@ return {
       },
     }
 
-    vim.keymap.set('n', '<leader>tt', '<Cmd>Neotree reveal left<CR>', { desc = '[T]oggle file[t]ree' })
+    vim.keymap.set('n', '<leader>tt', '<Cmd>Neotree reveal float<CR>', { desc = '[T]oggle file[t]ree' })
     -- vim.keymap.set('n', '<leader><tab>', '<cmd>Neotree reveal float<CR>', { desc = 'Toggle floating filetree' })
   end,
 }
