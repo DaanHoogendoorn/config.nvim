@@ -3,7 +3,7 @@ return {
   config = function()
     require('treesitter-context').setup {
       enable = true,
-      max_lines = 5,
+      max_lines = 7,
     }
   end,
 }
