@@ -840,10 +840,13 @@ require('lazy').setup({
   },
 })
 
--- Remap `<C-d>` to move down half a page and center the cursor
--- vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true })
--- Remap `<C-u>` to move up half a page and center the cursor
--- vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true })
+-- Move line down/up in normal mode with `Alt-j` and `Alt-k`
+vim.api.nvim_set_keymap('n', '<A-k>', ':move .-2<CR>==', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-j>', ':move .+1<CR>==', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<A-k>', '<Esc>:move .-2<CR>==gi', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<A-j>', '<Esc>:move .+1<CR>==gi', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('x', '<A-k>', ":move '<-2<CR>gv-gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('x', '<A-j>', ":move '>+1<CR>gv-gv", { noremap = true, silent = true })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
