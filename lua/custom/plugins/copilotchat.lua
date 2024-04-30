@@ -23,17 +23,13 @@ return {
 
     local chat = require 'CopilotChat'
     local actions = require 'CopilotChat.actions'
-    -- local integration = require 'CopilotChat.integrations.fzflua'
+    local integration = require 'CopilotChat.integrations.telescope'
 
-    -- local function pick(pick_actions)
-    --   return function()
-    --     integration.pick(pick_actions(), {
-    --       fzf_tmux_opts = {
-    --         ['-d'] = '45%',
-    --       },
-    --     })
-    --   end
-    -- end
+    local function pick(pick_actions)
+      return function()
+        integration.pick(pick_actions())
+      end
+    end
 
     chat.setup {
       model = 'gpt-4-turbo',
@@ -83,7 +79,7 @@ return {
 
     vim.keymap.set({ 'n', 'v' }, '<leader>aa', chat.toggle, { desc = '[A]I Toggle' })
     vim.keymap.set({ 'n', 'v' }, '<leader>ax', chat.reset, { desc = '[A]I Reset' })
-    -- vim.keymap.set({ 'n', 'v' }, '<leader>ah', pick(actions.help_actions), { desc = '[A]I [H]elp Actions' })
-    -- vim.keymap.set({ 'n', 'v' }, '<leader>ap', pick(actions.prompt_actions), { desc = '[A]I [P]rompt Actions' })
+    vim.keymap.set({ 'n', 'v' }, '<leader>ah', pick(actions.help_actions), { desc = '[A]I [H]elp Actions' })
+    vim.keymap.set({ 'n', 'v' }, '<leader>ap', pick(actions.prompt_actions), { desc = '[A]I [P]rompt Actions' })
   end,
 }
