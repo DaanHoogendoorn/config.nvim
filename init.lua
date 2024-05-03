@@ -273,6 +273,9 @@ require('lazy').setup({
             require('telescope.themes').get_dropdown(),
           },
         },
+        defaults = {
+          file_ignore_patterns = { 'node_modules', '.git', 'vendor' },
+        },
       }
 
       -- Enable Telescope extensions if they are installed
@@ -754,6 +757,7 @@ require('lazy').setup({
         'lua',
         'luadoc',
         'markdown',
+        'markdown_inline',
         'vim',
         'vimdoc',
         'php',
@@ -764,6 +768,7 @@ require('lazy').setup({
         'json',
         'javascript',
         'jsdoc',
+        'regex',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
