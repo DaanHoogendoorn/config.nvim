@@ -33,13 +33,13 @@ return {
 
     chat.setup {
       model = 'gpt-4-turbo',
-      window = {
-        layout = 'float',
-        relative = 'cursor',
-        width = 0.9,
-        height = 0.5,
-        row = 1,
-      },
+      -- window = {
+      --   layout = 'float',
+      --   relative = 'cursor',
+      --   width = 0.9,
+      --   height = 0.5,
+      --   row = 1,
+      -- },
       question_header = '',
       answer_header = '',
       error_header = '',
