@@ -731,6 +731,14 @@ require('lazy').setup({
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
+      local minifiles = require 'mini.files'
+      minifiles.setup()
+
+      -- :lua MiniFiles.open()
+      vim.keymap.set('n', '<leader>e', function()
+        minifiles.open()
+      end, { desc = '[E]xplore' })
+
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
