@@ -732,7 +732,13 @@ require('lazy').setup({
       require('mini.surround').setup()
 
       local minifiles = require 'mini.files'
-      minifiles.setup()
+      minifiles.setup {
+        windows = {
+          preview = true,
+          width_focus = 30,
+          width_preview = 50,
+        },
+      }
 
       -- :lua MiniFiles.open()
       vim.keymap.set('n', '<leader>e', function()
