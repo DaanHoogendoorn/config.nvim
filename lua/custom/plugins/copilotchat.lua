@@ -1,6 +1,7 @@
 return {
   'CopilotC-Nvim/CopilotChat.nvim',
-  branch = 'canary',
+  -- branch = 'canary',
+  event = 'VeryLazy',
   dependencies = {
     { 'github/copilot.vim' },
     -- { 'zbirenbaum/copilot.lua' },
@@ -88,5 +89,11 @@ return {
     vim.keymap.set({ 'n', 'v' }, '<leader>ax', chat.reset, { desc = '[A]I Reset' })
     vim.keymap.set({ 'n', 'v' }, '<leader>ah', pick(actions.help_actions), { desc = '[A]I [H]elp Actions' })
     vim.keymap.set({ 'n', 'v' }, '<leader>ap', pick(actions.prompt_actions), { desc = '[A]I [P]rompt Actions' })
+    -- vim.keymap.set({ 'n', 'v' }, '<leader>ab', function()
+    --   local input = vim.fn.input 'Quick Chat: '
+    --   if input ~= '' then
+    --     vim.cmd('CopilotChatBuffer ' .. input)
+    --   end
+    -- end, { desc = '[A]I [B]uffer' })
   end,
 }

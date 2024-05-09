@@ -14,7 +14,6 @@ return {
       extract = '```$filetype\n(.-)```',
     }
 
-    vim.keymap.set('n', '<leader>ag', ':Gen<CR>', { desc = 'Generate code with ollama', noremap = true })
-    vim.keymap.set('v', '<leader>ag', ':Gen<CR>', { desc = 'Generate code with ollama', noremap = true })
+    vim.keymap.set({ 'n', 'v' }, '<leader>ag', ':Gen<CR>', { desc = 'Generate code with ollama', noremap = true })
   end,
 }
