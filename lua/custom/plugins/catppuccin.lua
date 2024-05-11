@@ -8,6 +8,17 @@ return {
 
     require('catppuccin').setup {
       transparent_background = true,
+      integrations = {
+        telescope = true,
+        gitsigns = true,
+        mason = true,
+        notify = true,
+        bufferline = true,
+        harpoon = true,
+        noice = true,
+        which_key = true,
+        treesitter_context = true,
+      },
     }
   end,
 }
