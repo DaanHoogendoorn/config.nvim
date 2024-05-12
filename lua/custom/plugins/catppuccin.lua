@@ -7,7 +7,7 @@ return {
     vim.cmd.colorscheme 'catppuccin-mocha'
 
     require('catppuccin').setup {
-      transparent_background = true,
+      -- transparent_background = true,
       integrations = {
         telescope = true,
         gitsigns = true,
