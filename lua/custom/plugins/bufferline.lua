@@ -1,17 +1,11 @@
 return {
   'akinsho/bufferline.nvim',
   version = '*',
-  dependencies = 'nvim-tree/nvim-web-devicons',
-  opts = {
-    options = {
-      offsets = {
-        {
-          filetype = 'nvim-tree',
-          text = 'File Explorer',
-          highlight = 'Directory',
-          text_align = 'center',
-        },
-      },
-    },
-  },
+  after = 'catppuccin',
+  dependencies = { 'nvim-tree/nvim-web-devicons', 'catppuccin/nvim' },
+  config = function()
+    require('bufferline').setup {
+      highlights = require('catppuccin.groups.integrations.bufferline').get(),
+    }
+  end,
 }
