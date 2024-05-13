@@ -875,5 +875,14 @@ vim.api.nvim_set_keymap('x', '<A-j>', ":move '>+1<CR>gv-gv", { noremap = true, s
 vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true })
 
+-- https://www.reddit.com/r/neovim/comments/w0jzzv/comment/igfjx5y/ (smart dd)
+vim.keymap.set('n', 'dd', function()
+  if vim.api.nvim_get_current_line():match '^%s*$' then
+    return '"_dd'
+  else
+    return 'dd'
+  end
+end, { noremap = true, expr = true })
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
