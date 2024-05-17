@@ -15,7 +15,7 @@ return {
         gitsigns = true,
         mason = true,
         notify = true,
-        bufferline = true,
+        barbar = true,
         harpoon = true,
         noice = true,
         which_key = true,
