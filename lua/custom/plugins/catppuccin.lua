@@ -6,6 +6,9 @@ return {
   config = function()
     vim.cmd.colorscheme 'catppuccin-mocha'
 
+    -- You can configure highlights by doing something like:
+    vim.cmd.hi 'Comment gui=none'
+
     require('catppuccin').setup {
       -- transparent_background = true,
       integrations = {
@@ -23,7 +26,7 @@ return {
         treesitter_context = true,
         indent_blankline = {
           enabled = true,
-          colored_indent_levels = false,
+          colored_indent_levels = true,
         },
         mini = {
           enabled = true,
