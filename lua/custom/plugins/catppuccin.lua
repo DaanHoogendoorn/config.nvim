@@ -10,7 +10,7 @@ return {
     vim.cmd.hi 'Comment gui=none'
 
     require('catppuccin').setup {
-      -- transparent_background = true,
+      transparent_background = true,
       integrations = {
         telescope = {
           enabled = true,
