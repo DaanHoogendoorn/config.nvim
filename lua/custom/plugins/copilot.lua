@@ -1,19 +1,11 @@
 return {
   {
-    'github/copilot.vim',
-    -- 'zbirenbaum/copilot.lua',
+    'zbirenbaum/copilot.lua',
+    enabled = false,
     event = 'InsertEnter',
     command = 'Copilot',
-    build = ':Copilot auth',
-    -- opts = {
-    --   suggestion = { enabled = true },
-    --   panel = { enabled = true },
-    -- },
+    config = function()
+      require('copilot').setup {}
+    end,
   },
-  -- {
-  --   'zbirenbaum/copilot-cmp',
-  --   config = function()
-  --     require('copilot_cmp').setup()
-  --   end,
-  -- },
 }
