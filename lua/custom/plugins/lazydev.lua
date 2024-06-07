@@ -1,5 +1,13 @@
 return {
-  { 'folke/lazydev.nvim', ft = 'lua', opts = {} },
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {
+      library = {
+        'lazy.nvim',
+      },
+    },
+  },
   {
     'hrsh7th/nvim-cmp',
     opts = function(_, opts)
