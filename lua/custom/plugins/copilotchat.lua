@@ -1,6 +1,5 @@
 return {
   'CopilotC-Nvim/CopilotChat.nvim',
-  enabled = false,
   branch = 'canary',
   event = 'VeryLazy',
   dependencies = {
