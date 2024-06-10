@@ -912,6 +912,7 @@ vim.keymap.set('n', 'dd', function()
   end
 end, { noremap = true, expr = true })
 
+-- Use q to close certain buffers
 vim.api.nvim_create_autocmd('FileType', {
   pattern = {
     'checkhealth',
