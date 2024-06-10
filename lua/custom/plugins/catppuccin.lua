@@ -16,6 +16,7 @@ return {
           enabled = true,
         },
         gitsigns = true,
+        dashboard = true,
         mason = true,
         notify = true,
         barbar = true,

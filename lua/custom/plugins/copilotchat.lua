@@ -8,7 +8,7 @@ return {
     { 'nvim-lua/plenary.nvim' },
   },
   opts = {
-    debug = false,
+    debug = true,
   },
   config = function()
     local wk = require 'which-key'
