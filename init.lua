@@ -712,6 +712,7 @@ require('lazy').setup({
         },
         sources = {
           -- { name = 'copilot' },
+          { name = 'lazydev' },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
@@ -910,6 +911,23 @@ vim.keymap.set('n', 'dd', function()
     return 'dd'
   end
 end, { noremap = true, expr = true })
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {
+    'checkhealth',
+    'fugitive*',
+    'git',
+    'help',
+    'lspinfo',
+    'netrw',
+    'notify',
+    'qf',
+    'query',
+  },
+  callback = function()
+    vim.keymap.set('n', 'q', vim.cmd.close, { desc = 'Close the current buffer', buffer = true })
+  end,
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

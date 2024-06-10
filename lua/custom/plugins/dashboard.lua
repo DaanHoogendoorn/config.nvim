@@ -10,17 +10,20 @@ return {
       },
       config = {
         shortcut = {
+          -- Open Lazy
+          { desc = '󰒲 Open Lazy', group = 'open', action = 'Lazy', key = 'l' },
+
           -- Update plugins
-          { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
+          { desc = '󰊳 Update', group = 'updates', action = 'Lazy update', key = 'u' },
 
           -- Update remote plugins
-          { desc = ' Update Remote', group = '@property', action = 'UpdateRemotePlugins', key = 'U' },
+          { desc = ' Update Remote', group = 'updates', action = 'UpdateRemotePlugins', key = 'U' },
 
           -- Find file with telescope
-          { desc = '󰮗 Find File', group = '@find', action = 'Telescope find_files', key = 'f' },
+          { desc = '󰮗 Search File', group = 'search', action = 'Telescope find_files', key = 'f' },
 
           -- Quit
-          { desc = '󰍃 Quit', group = '@quit', action = 'qa', key = 'q' },
+          { desc = '󰍃 Quit', group = 'quit', action = 'qa', key = 'q' },
         },
         week_header = {
           enable = true,
