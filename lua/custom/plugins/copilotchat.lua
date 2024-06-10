@@ -3,8 +3,8 @@ return {
   branch = 'canary',
   event = 'VeryLazy',
   dependencies = {
-    -- { 'github/copilot.vim' },
-    { 'zbirenbaum/copilot.lua' },
+    { 'github/copilot.vim' },
+    -- { 'zbirenbaum/copilot.lua' },
     { 'nvim-lua/plenary.nvim' },
   },
   opts = {
