@@ -551,6 +551,8 @@ require('lazy').setup({
         'emmet-language-server',
         'cssls',
         'html',
+        'eslint_d',
+        'css_variables',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
