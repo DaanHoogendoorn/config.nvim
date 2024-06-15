@@ -738,8 +738,6 @@ require('lazy').setup({
 
       local mini_ai = require 'mini.ai'
 
-      local gen_spec = mini_ai.gen_spec
-
       mini_ai.setup {
         n_lines = 500,
       }
