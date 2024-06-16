@@ -16,11 +16,11 @@ return {
           enabled = true,
         },
         gitsigns = true,
+        gitgutter = true,
         dashboard = true,
         mason = true,
         notify = true,
         barbar = true,
-        harpoon = true,
         noice = true,
         which_key = true,
         treesitter = true,
@@ -35,6 +35,28 @@ return {
         cmp = true,
         illuminate = {
           enabled = true,
+        },
+        fidget = true,
+        lsp_trouble = true,
+        native_lsp = {
+          enabled = true,
+          virtual_text = {
+            errors = { 'italic' },
+            hints = { 'italic' },
+            warnings = { 'italic' },
+            information = { 'italic' },
+            ok = { 'italic' },
+          },
+          underlines = {
+            errors = { 'underline' },
+            hints = { 'underline' },
+            warnings = { 'underline' },
+            information = { 'underline' },
+            ok = { 'underline' },
+          },
+          inlay_hints = {
+            background = true,
+          },
         },
       },
     }
