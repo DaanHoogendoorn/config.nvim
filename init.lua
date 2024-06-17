@@ -551,8 +551,10 @@ require('lazy').setup({
         'emmet-language-server',
         'cssls',
         'html',
-        'eslint_d',
+        'eslint',
         'css_variables',
+        'phpcs',
+        'php-cs-fixer',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -740,6 +742,18 @@ require('lazy').setup({
 
       mini_ai.setup {
         n_lines = 500,
+        o = mini_ai.gen_spec.treesitter { -- code block
+          a = { '@block.outer', '@conditional.outer', '@loop.outer' },
+          i = { '@block.inner', '@conditional.inner', '@loop.inner' },
+        },
+        f = mini_ai.gen_spec.treesitter { a = '@function.outer', i = '@function.inner' }, -- function
+        c = mini_ai.gen_spec.treesitter { a = '@class.outer', i = '@class.inner' }, -- class
+        t = { '<([%p%w]-)%f[^<%w][^<>]->.-</%1>', '^<.->().*()</[^/]->$' }, -- tags
+        d = { '%f[%d]%d+' }, -- digits
+        e = { -- Word with case
+          { '%u[%l%d]+%f[^%l%d]', '%f[%S][%l%d]+%f[^%l%d]', '%f[%P][%l%d]+%f[^%l%d]', '^[%l%d]+%f[^%l%d]' },
+          '^().*()$',
+        },
       }
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)

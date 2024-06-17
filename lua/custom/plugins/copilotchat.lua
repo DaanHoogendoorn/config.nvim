@@ -25,20 +25,15 @@ return {
       end
     end
 
+    local user = vim.env.USER or 'User'
+    user = user:sub(1, 1):upper() .. user:sub(2)
+
     chat.setup {
       model = 'gpt-4-turbo',
-      question_header = '',
-      answer_header = '',
-      error_header = '',
-      mappings = {
-        submit_prompt = {
-          insert = '',
-        },
-        reset = {
-          normal = '',
-          insert = '',
-        },
-      },
+      auto_insert_mode = true,
+      show_help = true,
+      question_header = '  ' .. user .. ' ',
+      answer_header = '  Copilot ',
       prompts = {
         Explain = {
           mapping = '<leader>ae',
