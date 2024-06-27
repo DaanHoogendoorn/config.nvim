@@ -2,9 +2,19 @@ return {
   'toppair/peek.nvim',
   event = { 'VeryLazy' },
   build = 'deno task --quiet build:fast',
+  ft = 'markdown',
   config = function()
-    require('peek').setup()
-    vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
-    vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
+    local peek = require 'peek'
+    peek.setup()
+    vim.api.nvim_create_user_command('PeekOpen', peek.open, {})
+    vim.api.nvim_create_user_command('PeekClose', peek.close, {})
+
+    vim.keymap.set('n', '<leader>tp', function()
+      if peek.is_open() then
+        peek.close()
+      else
+        peek.open()
+      end
+    end, { desc = '[T]oggle [P]eek', noremap = true, silent = true })
   end,
 }
