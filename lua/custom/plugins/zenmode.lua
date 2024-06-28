@@ -3,7 +3,7 @@ return {
   config = function()
     require('zen-mode').setup {
       plugins = {
-        kitty = {
+        wezterm = {
           enabled = true,
           font = '+2',
         },

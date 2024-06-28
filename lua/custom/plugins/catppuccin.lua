@@ -20,7 +20,6 @@ return {
         dashboard = true,
         mason = true,
         notify = true,
-        barbar = true,
         noice = true,
         which_key = true,
         treesitter = true,
@@ -33,9 +32,6 @@ return {
           enabled = true,
         },
         cmp = true,
-        illuminate = {
-          enabled = true,
-        },
         fidget = true,
         lsp_trouble = true,
         native_lsp = {
