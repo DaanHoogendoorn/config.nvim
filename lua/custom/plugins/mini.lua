@@ -76,6 +76,22 @@ return { -- Collection of various small independent plugins/modules
       show_icons = vim.g.have_nerd_font,
     }
 
+    -- animate
+    require('mini.animate').setup {
+      cursor = {
+        enable = false,
+      },
+      resize = {
+        enable = false,
+      },
+      open = {
+        enable = false,
+      },
+      close = {
+        enable = false,
+      },
+    }
+
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim
   end,
