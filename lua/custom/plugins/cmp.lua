@@ -95,7 +95,6 @@ return { -- Autocompletion
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       },
       sources = {
-        -- { name = 'copilot' },
         { name = 'lazydev' },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
