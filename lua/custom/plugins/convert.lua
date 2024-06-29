@@ -1,5 +1,6 @@
 return {
   'cjodo/convert.nvim',
+  event = 'BufRead',
   dependencies = {
     'MunifTanjim/nui.nvim',
   },

@@ -4,7 +4,6 @@ return {
   event = 'VeryLazy',
   dependencies = {
     { 'github/copilot.vim' },
-    -- { 'zbirenbaum/copilot.lua' },
     { 'nvim-lua/plenary.nvim' },
   },
   opts = {
