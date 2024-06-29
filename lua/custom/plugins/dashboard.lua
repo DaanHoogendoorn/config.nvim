@@ -19,9 +19,6 @@ return {
           -- Update remote plugins
           { desc = ' Update Remote', group = 'updates', action = 'UpdateRemotePlugins', key = 'U' },
 
-          -- Find file with telescope
-          { desc = '󰮗 Search File', group = 'search', action = 'Telescope find_files', key = 'f' },
-
           -- Quit
           { desc = '󰍃 Quit', group = 'quit', action = 'qa', key = 'q' },
         },
