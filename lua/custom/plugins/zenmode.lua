@@ -8,6 +8,9 @@ return {
           enabled = true,
           font = '+2',
         },
+        tmux = {
+          enabled = true,
+        },
       },
     }
 
