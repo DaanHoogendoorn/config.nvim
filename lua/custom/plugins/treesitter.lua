@@ -81,7 +81,7 @@ return {
               ['al'] = { query = '@loop.outer' },
               ['il'] = { query = '@loop.inner' },
             },
-            include_surrounding_whitespace = true,
+            include_surrounding_whitespace = false,
           },
         },
       }

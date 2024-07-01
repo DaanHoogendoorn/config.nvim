@@ -45,27 +45,6 @@ return { -- Collection of various small independent plugins/modules
     -- hipatterns
     require('mini.hipatterns').setup()
 
-    -- tabline
-    require('mini.tabline').setup {
-      show_icons = vim.g.have_nerd_font,
-    }
-
-    -- animate
-    require('mini.animate').setup {
-      cursor = {
-        enable = false,
-      },
-      resize = {
-        enable = false,
-      },
-      open = {
-        enable = false,
-      },
-      close = {
-        enable = false,
-      },
-    }
-
     -- jump2d
     require('mini.jump2d').setup()
 

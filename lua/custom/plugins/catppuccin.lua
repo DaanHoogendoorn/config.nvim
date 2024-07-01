@@ -17,6 +17,7 @@ return {
         },
         gitsigns = true,
         gitgutter = true,
+        barbar = true,
         dashboard = true,
         mason = true,
         notify = true,

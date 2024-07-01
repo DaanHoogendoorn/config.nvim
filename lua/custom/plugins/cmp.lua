@@ -101,5 +101,7 @@ return { -- Autocompletion
         { name = 'path' },
       },
     }
+
+    require 'custom.config.snippets'
   end,
 }
