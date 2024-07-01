@@ -158,12 +158,12 @@ require('lazy').setup({
 })
 
 -- Move line down/up in normal mode with `Alt-j` and `Alt-k`
-vim.api.nvim_set_keymap('n', '<A-k>', ':move .-2<CR>==', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<A-j>', ':move .+1<CR>==', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<A-k>', '<Esc>:move .-2<CR>==gi', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<A-j>', '<Esc>:move .+1<CR>==gi', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('x', '<A-k>', ":move '<-2<CR>gv-gv", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('x', '<A-j>', ":move '>+1<CR>gv-gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-Up>', ':move .-2<CR>==', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-Down>', ':move .+1<CR>==', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-Up>', '<Esc>:move .-2<CR>==gi', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-Down>', '<Esc>:move .+1<CR>==gi', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('x', '<C-Up>', ":move '<-2<CR>gv-gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('x', '<C-Down>', ":move '>+1<CR>gv-gv", { noremap = true, silent = true })
 
 -- Cycle through buffer with tab and shift-tab
 vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
