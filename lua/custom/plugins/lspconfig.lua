@@ -173,14 +173,11 @@ return { -- LSP Configuration & Plugins
         },
       },
       phpactor = {
-        settings = {
-          ['language_server_worse_reflection'] = {
-            ['inlay_hints'] = {
-              ['enable'] = true,
-              ['types'] = true,
-              ['params'] = true,
-            },
-          },
+        filetypes = { 'php', 'blade' },
+        init_options = {
+          ['language_server_worse_reflection.inlay_hints.enable'] = true,
+          ['language_server_worse_reflection.inlay_hints.params'] = true,
+          -- ['language_server_worse_reflection.inlay_hints.types'] = true,
         },
       },
       emmet_language_server = {
