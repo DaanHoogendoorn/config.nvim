@@ -1,6 +1,6 @@
 return {
   'David-Kunz/gen.nvim',
-  event = 'VeryLazy',
+  event = 'BufRead',
   config = function()
     local gen = require 'gen'
 
