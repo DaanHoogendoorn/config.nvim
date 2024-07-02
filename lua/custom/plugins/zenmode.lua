@@ -1,6 +1,6 @@
 return {
   'folke/zen-mode.nvim',
-  event = 'VeryLazy',
+  event = 'BufRead',
   config = function()
     require('zen-mode').setup {
       plugins = {
