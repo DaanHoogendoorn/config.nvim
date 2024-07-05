@@ -42,7 +42,7 @@ ls.add_snippets(nil, {
       namr = 'Palette color 1',
       dscr = 'Palette color 1',
     }, {
-      text { 'var(--palette-color-1)' },
+      text { 'var(--theme-palette-color-1)' },
     }),
 
     snip({
@@ -50,7 +50,7 @@ ls.add_snippets(nil, {
       namr = 'Palette color 2',
       dscr = 'Palette color 2',
     }, {
-      text { 'var(--palette-color-2)' },
+      text { 'var(--theme-palette-color-2)' },
     }),
 
     snip({
@@ -58,7 +58,7 @@ ls.add_snippets(nil, {
       namr = 'Palette color 3',
       dscr = 'Palette color 3',
     }, {
-      text { 'var(--palette-color-3)' },
+      text { 'var(--theme-palette-color-3)' },
     }),
 
     snip({
@@ -66,7 +66,7 @@ ls.add_snippets(nil, {
       namr = 'Palette color 4',
       dscr = 'Palette color 4',
     }, {
-      text { 'var(--palette-color-4)' },
+      text { 'var(--theme-palette-color-4)' },
     }),
 
     snip({
@@ -74,7 +74,7 @@ ls.add_snippets(nil, {
       namr = 'Palette color 5',
       dscr = 'Palette color 5',
     }, {
-      text { 'var(--palette-color-5)' },
+      text { 'var(--theme-palette-color-5)' },
     }),
 
     snip({
@@ -82,7 +82,7 @@ ls.add_snippets(nil, {
       namr = 'Palette color 6',
       dscr = 'Palette color 6',
     }, {
-      text { 'var(--palette-color-6)' },
+      text { 'var(--theme-palette-color-6)' },
     }),
 
     snip({
@@ -90,7 +90,7 @@ ls.add_snippets(nil, {
       namr = 'Palette color 7',
       dscr = 'Palette color 7',
     }, {
-      text { 'var(--palette-color-7)' },
+      text { 'var(--theme-palette-color-7)' },
     }),
 
     snip({
@@ -98,7 +98,7 @@ ls.add_snippets(nil, {
       namr = 'Palette color 8',
       dscr = 'Palette color 8',
     }, {
-      text { 'var(--palette-color-8)' },
+      text { 'var(--theme-palette-color-8)' },
     }),
   },
 })
