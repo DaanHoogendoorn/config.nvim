@@ -21,6 +21,7 @@ return {
         dashboard = true,
         mason = true,
         notify = true,
+        markdown = true,
         noice = true,
         which_key = true,
         treesitter = true,
