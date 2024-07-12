@@ -33,6 +33,7 @@ return { -- Autoformat
       css = { { 'prettier' } },
       scss = { { 'prettier' } },
       xml = { { 'prettier' } },
+      blade = { { 'prettier' } },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --
