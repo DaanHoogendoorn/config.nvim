@@ -200,3 +200,6 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- copy entire buffer content
 vim.api.nvim_set_keymap('n', '<leader>yy', ':%y<CR>', { noremap = true, silent = true })
+
+-- add semicolon to the end of the line
+vim.api.nvim_set_keymap('n', '<leader>;', 'mmA;<Esc>`m', { desc = 'Add semicolon to end of line', noremap = true, silent = true })
