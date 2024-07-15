@@ -12,6 +12,17 @@ local choice = ls.choice_node
 local dynamicn = ls.dynamic_node
 
 ls.add_snippets(nil, {
+  typescript = {
+    snip({
+      trig = 'cl',
+      namr = 'Console log',
+      dscr = 'Console log',
+    }, {
+      text { 'console.log(' },
+      insert(1),
+      text { ')' },
+    }),
+  },
   scss = {
     snip({
       trig = '@bb',
