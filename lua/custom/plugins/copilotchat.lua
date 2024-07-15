@@ -14,7 +14,10 @@ return {
 
     local wk = require 'which-key'
 
-    wk.register { ['<leader>a'] = { name = '[A]I', _ = 'whick_key_ignore' } }
+    wk.add {
+      { '<leader>a', group = '[A]I' },
+      { '<leader>a_', desc = 'whick_key_ignore' },
+    }
 
     local chat = require 'CopilotChat'
     local actions = require 'CopilotChat.actions'
