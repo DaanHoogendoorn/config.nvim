@@ -230,6 +230,7 @@ return { -- LSP Configuration & Plugins
       'css_variables',
       'phpcs',
       'php-cs-fixer',
+      'jsonls',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
