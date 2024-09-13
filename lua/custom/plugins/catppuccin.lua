@@ -4,12 +4,11 @@ return {
   lazy = false,
   priority = 1000,
   config = function()
-    vim.cmd.colorscheme 'catppuccin-mocha'
-
     -- You can configure highlights by doing something like:
     vim.cmd.hi 'Comment gui=none'
 
     require('catppuccin').setup {
+      flavour = 'mocha',
       transparent_background = true,
       integrations = {
         telescope = {
@@ -58,5 +57,7 @@ return {
         },
       },
     }
+
+    vim.cmd.colorscheme 'catppuccin'
   end,
 }
