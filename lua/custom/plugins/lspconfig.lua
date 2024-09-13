@@ -190,6 +190,18 @@ return { -- LSP Configuration & Plugins
           validate = { enable = true },
         },
       },
+      rust_analyzer = {
+        settings = {
+          ['rust-analyzer'] = {
+            inlayHints = {
+              typeHints = true,
+              parameterHints = true,
+              chainingHints = true,
+              maxLength = 120,
+            },
+          },
+        },
+      },
       --
 
       lua_ls = {

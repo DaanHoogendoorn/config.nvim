@@ -35,6 +35,7 @@ return { -- Autoformat
       scss = { 'prettierd', 'prettier', stop_after_first = true },
       xml = { 'prettierd', 'prettier', stop_after_first = true },
       blade = { 'prettierd', 'prettier', stop_after_first = true },
+      rust = { 'rustfmt' },
     },
   },
 }
