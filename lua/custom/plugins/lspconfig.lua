@@ -185,6 +185,11 @@ return { -- LSP Configuration & Plugins
       },
       cssls = {},
       html = {},
+      jsonls = {
+        settings = {
+          validate = { enable = true },
+        },
+      },
       --
 
       lua_ls = {
