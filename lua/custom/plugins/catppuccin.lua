@@ -9,7 +9,7 @@ return {
 
     require('catppuccin').setup {
       flavour = 'mocha',
-      transparent_background = true,
+      transparent_background = false,
       integrations = {
         telescope = {
           enabled = true,
