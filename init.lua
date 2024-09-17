@@ -206,3 +206,25 @@ vim.api.nvim_set_keymap('n', '<leader>yy', ':%y<CR>', { noremap = true, silent =
 vim.api.nvim_set_keymap('n', '<leader>;', 'mmA;<Esc>`m', { desc = 'Add semicolon to end of line', noremap = true, silent = true })
 -- add comma to the end of the line
 vim.api.nvim_set_keymap('n', '<leader>,', 'mmA,<Esc>`m', { desc = 'Add comma to end of line', noremap = true, silent = true })
+
+local wk = require 'which-key'
+
+wk.add {
+  { '<leader>i', group = '[I]nsert' },
+  { '<leader>i_', desc = 'whick_key_ignore' },
+}
+
+-- easy figlet input
+vim.keymap.set('n', '<leader>if', function()
+  local input = vim.fn.input {
+    prompt = 'Figlet: ',
+  }
+
+  if input ~= '' then
+    local figlet_output = vim.fn.system('figlet ' .. vim.fn.shellescape(input))
+
+    vim.api.nvim_put(vim.split(figlet_output, '\n'), 'l', true, true)
+  else
+    print 'No input provided'
+  end
+end, { desc = '[I]nsert [f]iglet', noremap = true, silent = true })
