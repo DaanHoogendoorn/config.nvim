@@ -24,6 +24,36 @@ return { -- Fuzzy Finder (files, lsp, etc)
       },
       defaults = {
         file_ignore_patterns = { 'node_modules', '.git', 'vendor' },
+        vimgrep_arguments = {
+          'rg',
+          '--color=never',
+          '--no-heading',
+          '--with-filename',
+          '--line-number',
+          '--column',
+          '--smart-case',
+          '--hidden',
+          '--glob=!**/.git/*',
+          '--glob=!**/.idea/*',
+          '--glob=!**/.vscode/*',
+          '--glob=!**/yarn.lock',
+          '--glob=!**/package-lock.json',
+        },
+      },
+      pickers = {
+        find_files = {
+          hidden = true,
+          find_command = {
+            'rg',
+            '--files',
+            '--hidden',
+            '--glob=!**/.git/*',
+            '--glob=!**/.idea/*',
+            '--glob=!**/.vscode/*',
+            '--glob=!**/yarn.lock',
+            '--glob=!**/package-lock.json',
+          },
+        },
       },
     }
 
