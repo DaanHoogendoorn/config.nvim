@@ -7,9 +7,10 @@ return {
       require('copilot').setup {
         suggestion = {
           enabled = true,
-          auto_trigger = true,
+          auto_trigger = false, -- this can be toggled using <leader>tc
           keymap = {
             accept = false,
+            next = '<C-c>',
           },
         },
       }
