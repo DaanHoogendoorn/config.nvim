@@ -18,6 +18,7 @@ return {
         gitgutter = true,
         barbar = true,
         dashboard = true,
+        flash = true,
         mason = true,
         notify = true,
         markdown = true,
@@ -35,6 +36,8 @@ return {
         cmp = true,
         fidget = true,
         lsp_trouble = true,
+        dap = true,
+        dap_ui = true,
         native_lsp = {
           enabled = true,
           virtual_text = {
