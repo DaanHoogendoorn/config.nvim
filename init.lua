@@ -228,3 +228,8 @@ vim.keymap.set('n', '<leader>if', function()
     print 'No input provided'
   end
 end, { desc = '[I]nsert [f]iglet', noremap = true, silent = true })
+
+-- toggle wrap
+vim.keymap.set('n', '<leader>tw', function()
+  vim.wo.wrap = not vim.wo.wrap
+end, { desc = '[T]oggle [w]rap', noremap = true, silent = true })
