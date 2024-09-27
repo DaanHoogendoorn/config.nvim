@@ -158,7 +158,10 @@ require('lazy').setup({
       lazy = '💤 ',
     },
   },
-  checker = { enabled = true },
+  checker = {
+    enabled = true,
+    notify = false,
+  },
 })
 
 -- Move line down/up in normal mode with `Alt-j` and `Alt-k`
