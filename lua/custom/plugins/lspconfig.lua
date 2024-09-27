@@ -192,6 +192,7 @@ return { -- LSP Configuration & Plugins
           },
         },
       },
+      marksman = {},
       --
 
       lua_ls = {
