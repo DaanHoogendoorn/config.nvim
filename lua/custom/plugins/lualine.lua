@@ -27,6 +27,10 @@ return {
                 },
               },
             },
+            {
+              require('lazy.status').updates,
+              cond = require('lazy.status').has_updates,
+            },
             'encoding',
             'fileformat',
             'filetype',
