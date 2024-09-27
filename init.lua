@@ -233,3 +233,6 @@ end, { desc = '[I]nsert [f]iglet', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>tw', function()
   vim.wo.wrap = not vim.wo.wrap
 end, { desc = '[T]oggle [w]rap', noremap = true, silent = true })
+
+-- toggle git blame
+vim.keymap.set('n', '<leader>tb', '<CMD>Gitsigns toggle_current_line_blame<CR>', { desc = '[T]oggle [b]lame', noremap = true, silent = true })
