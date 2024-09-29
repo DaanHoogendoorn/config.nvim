@@ -220,16 +220,20 @@ wk.add {
 
 -- easy figlet input
 vim.keymap.set('n', '<leader>if', function()
-  local input = vim.fn.input {
-    prompt = 'Figlet: ',
-  }
+  if vim.fn.executable 'figlet' == 1 then
+    local input = vim.fn.input {
+      prompt = 'Figlet: ',
+    }
 
-  if input ~= '' then
-    local figlet_output = vim.fn.system('figlet ' .. vim.fn.shellescape(input))
+    if input ~= '' then
+      local figlet_output = vim.fn.system('figlet ' .. vim.fn.shellescape(input))
 
-    vim.api.nvim_put(vim.split(figlet_output, '\n'), 'l', true, true)
+      vim.api.nvim_put(vim.split(figlet_output, '\n'), 'l', true, true)
+    else
+      print 'No input provided'
+    end
   else
-    print 'No input provided'
+    print 'Figlet is not installed'
   end
 end, { desc = '[I]nsert [f]iglet', noremap = true, silent = true })
 
