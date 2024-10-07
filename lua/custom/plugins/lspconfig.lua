@@ -163,7 +163,7 @@ return { -- LSP Configuration & Plugins
         },
       },
       phpactor = {
-        filetypes = { 'php', 'blade' },
+        filetypes = { 'php', 'blade', 'php_only' },
         init_options = {
           ['language_server_worse_reflection.inlay_hints.enable'] = true,
           ['language_server_worse_reflection.inlay_hints.params'] = true,
@@ -171,7 +171,7 @@ return { -- LSP Configuration & Plugins
         },
       },
       emmet_language_server = {
-        filetypes = { 'html', 'css', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'php', 'blade' },
+        filetypes = { 'html', 'css', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'php', 'blade', 'php_only' },
       },
       cssls = {},
       html = {},
