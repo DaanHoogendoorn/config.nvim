@@ -4,6 +4,9 @@ return {
   config = function()
     require('zen-mode').setup {
       plugins = {
+        twilight = {
+          enabled = true,
+        },
         wezterm = {
           enabled = true,
           font = '+2',
