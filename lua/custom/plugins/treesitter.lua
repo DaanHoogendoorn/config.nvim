@@ -109,6 +109,8 @@ return {
               ['r='] = '@assignment.rhs',
               ['a,'] = '@parameter.outer',
               ['i,'] = '@parameter.inner',
+              ['an'] = '@node.outer', -- New keymap for capturing the current node
+              ['in'] = '@node.inner', -- New keymap for capturing the current node
             },
             include_surrounding_whitespace = false,
           },
