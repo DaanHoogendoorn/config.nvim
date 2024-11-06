@@ -20,7 +20,6 @@ return {
         dashboard = true,
         flash = true,
         mason = true,
-        notify = true,
         markdown = true,
         noice = true,
         which_key = true,
