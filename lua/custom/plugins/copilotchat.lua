@@ -33,6 +33,7 @@ return {
     user = user:sub(1, 1):upper() .. user:sub(2)
 
     chat.setup {
+      model = 'o1-preview',
       show_help = true,
       question_header = '  ' .. user .. ' ',
       answer_header = '  Copilot ',
