@@ -28,6 +28,12 @@ return {
         footer = {
           'bwah',
         },
+        project = {
+          enable = false,
+        },
+        mru = {
+          cwd_only = true,
+        },
       },
     }
   end,
