@@ -12,6 +12,16 @@ local choice = ls.choice_node
 local dynamicn = ls.dynamic_node
 
 ls.add_snippets(nil, {
+  php = {
+    snip({
+      trig = 'this',
+      namr = '$this->',
+      dscr = '$this->',
+    }, {
+      text { '$this->' },
+      insert(1),
+    }),
+  },
   typescript = {
     snip({
       trig = 'cl',
