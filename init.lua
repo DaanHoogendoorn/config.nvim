@@ -238,7 +238,7 @@ vim.keymap.set('n', '<leader>if', function()
 end, { desc = '[I]nsert [f]iglet', noremap = true, silent = true })
 
 -- toggle git blame
-vim.keymap.set('n', '<leader>tb', '<CMD>Gitsigns toggle_current_line_blame<CR>', { desc = '[T]oggle [b]lame', noremap = true, silent = true })
+-- vim.keymap.set('n', '<leader>tb', '<CMD>Gitsigns toggle_current_line_blame<CR>', { desc = '[T]oggle [b]lame', noremap = true, silent = true })
 
 require('custom.config.selectquotes').setup {
   key = 'q',

@@ -2,7 +2,11 @@ return {
   'folke/zen-mode.nvim',
   event = 'BufRead',
   config = function()
-    require('zen-mode').setup {
+    local zenmode = require 'zen-mode'
+
+    vim.g.zenmode_enabled = false
+
+    zenmode.setup {
       plugins = {
         twilight = {
           enabled = true,
@@ -17,6 +21,21 @@ return {
       },
     }
 
-    vim.keymap.set('n', '<leader>tz', '<CMD>ZenMode<CR>', { desc = '[T]oggle [Z]en Mode' })
+    Snacks.toggle
+      .new({
+        name = 'ZenMode',
+        get = function()
+          return vim.g.zenmode_enabled
+        end,
+        set = function(state)
+          if state == vim.g.zenmode_enabled then
+            return
+          end
+
+          vim.g.zenmode_enabled = state
+          zenmode.toggle()
+        end,
+      })
+      :map '<leader>tz'
   end,
 }
