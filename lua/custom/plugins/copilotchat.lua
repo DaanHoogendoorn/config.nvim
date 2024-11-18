@@ -36,11 +36,7 @@ return {
       question_header = '  ' .. user .. ' ',
       answer_header = '  Copilot ',
       chat_autocomplete = true,
-      mappings = {
-        complete = {
-          insert = '',
-        },
-      },
+      mappings = {},
       prompts = {
         Explain = {
           mapping = '<leader>ae',
