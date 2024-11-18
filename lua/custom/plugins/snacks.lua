@@ -11,6 +11,12 @@ return {
       style = 'compact',
     },
     quickfile = { enabled = true },
+    bufdelete = { enabled = true },
+    debug = { enabled = true },
+    lazygit = { enabled = true },
+    notify = { enabled = true },
+    rename = { enabled = true },
+    toggle = { enabled = true },
   },
   keys = {
     {
