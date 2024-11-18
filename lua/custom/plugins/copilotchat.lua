@@ -10,8 +10,6 @@ return {
     debug = true,
   },
   config = function()
-    require('CopilotChat.integrations.cmp').setup()
-
     local wk = require 'which-key'
 
     wk.add {
@@ -37,6 +35,7 @@ return {
       show_help = true,
       question_header = '  ' .. user .. ' ',
       answer_header = '  Copilot ',
+      chat_autocomplete = true,
       mappings = {
         complete = {
           insert = '',
