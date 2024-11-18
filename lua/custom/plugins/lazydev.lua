@@ -3,11 +3,15 @@ return {
     'folke/lazydev.nvim',
     ft = 'lua',
     dependencies = {
-      'hrsh7th/nvim-cmp',
+      {
+        'justinsgithub/wezterm-types',
+        lazy = true,
+      },
     },
     opts = {
       library = {
         'lazy.nvim',
+        { path = 'wezterm-types', mods = { 'wezterm' } },
       },
     },
   },
