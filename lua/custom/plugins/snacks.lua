@@ -17,6 +17,8 @@ return {
     notify = { enabled = true },
     rename = { enabled = true },
     toggle = { enabled = true },
+    win = { enabled = true },
+    words = { enabled = true },
   },
   keys = {
     {
@@ -39,6 +41,22 @@ return {
         Snacks.lazygit.log_file()
       end,
       desc = '[L]azy[g]it current file history',
+    },
+    {
+      ']]',
+      function()
+        Snacks.words.jump(vim.v.count1)
+      end,
+      desc = 'Next Reference',
+      mode = { 'n', 't' },
+    },
+    {
+      '[[',
+      function()
+        Snacks.words.jump(-vim.v.count1)
+      end,
+      desc = 'Prev Reference',
+      mode = { 'n', 't' },
     },
   },
   init = function()
