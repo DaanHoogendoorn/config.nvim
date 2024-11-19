@@ -164,14 +164,6 @@ require('lazy').setup({
   },
 })
 
--- Move line down/up in normal mode with `Alt-j` and `Alt-k`
-vim.api.nvim_set_keymap('n', '<C-Up>', ':move .-2<CR>==', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-Down>', ':move .+1<CR>==', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<C-Up>', '<Esc>:move .-2<CR>==gi', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<C-Down>', '<Esc>:move .+1<CR>==gi', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('x', '<C-Up>', ":move '<-2<CR>gv-gv", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('x', '<C-Down>', ":move '>+1<CR>gv-gv", { noremap = true, silent = true })
-
 -- Cycle through buffer with tab and shift-tab
 vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true })
@@ -245,7 +237,6 @@ vim.keymap.set('n', '<leader>if', function()
   end
 end, { desc = '[I]nsert [f]iglet', noremap = true, silent = true })
 
--- toggle git blame
 require('custom.config.selectquotes').setup {
   key = 'q',
 }
