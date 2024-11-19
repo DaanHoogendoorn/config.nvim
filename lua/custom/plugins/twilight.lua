@@ -1,8 +1,22 @@
 return {
   'folke/twilight.nvim',
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-  },
+  config = function()
+    local twilight = require 'twilight.view'
+
+    Snacks.toggle
+      .new({
+        name = 'Twilight',
+        get = function()
+          return twilight.enabled
+        end,
+        set = function(state)
+          if twilight.enabled then
+            twilight.disable()
+          else
+            twilight.enable()
+          end
+        end,
+      })
+      :map '<leader>tt'
+  end,
 }
