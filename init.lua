@@ -185,6 +185,14 @@ vim.keymap.set('n', 'dd', function()
   end
 end, { noremap = true, expr = true })
 
+vim.keymap.set('n', 'cc', function()
+  if vim.api.nvim_get_current_line():match '^%s*$' then
+    return '"_cc'
+  else
+    return 'cc'
+  end
+end, { noremap = true, expr = true })
+
 -- Use q to close certain buffers
 vim.api.nvim_create_autocmd('FileType', {
   pattern = {
