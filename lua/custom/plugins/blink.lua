@@ -9,7 +9,7 @@ return {
     'saghen/blink.cmp',
     lazy = false, -- lazy loading handled internally
     -- optional: provides snippets for the snippet source
-    dependencies = 'rafamadriz/friendly-snippets',
+    dependencies = { 'rafamadriz/friendly-snippets', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
 
     -- use a release tag to download pre-built binaries
     version = 'v0.*',
@@ -48,14 +48,19 @@ return {
       nerd_font_variant = 'normal',
 
       -- experimental auto-brackets support
-      accept = { auto_brackets = { enabled = true } },
+      accept = {
+        auto_brackets = { enabled = true },
+        expand_snippet = function(snippet)
+          require('luasnip').lsp_expand(snippet)
+        end,
+      },
 
       -- experimental signature help support
       trigger = { signature_help = { enabled = true } },
 
       sources = {
         completion = {
-          enabled_providers = { 'lsp', 'path', 'snippets', 'buffer', 'px-to-rem', 'lazydev' },
+          enabled_providers = { 'lsp', 'path', 'luasnip', 'snippets', 'buffer', 'px-to-rem', 'lazydev' },
         },
         providers = {
           lazydev = {
@@ -68,6 +73,15 @@ return {
           ['px-to-rem'] = {
             name = 'px-to-rem',
             module = 'blink.compat.source',
+          },
+          luasnip = {
+            name = 'luasnip',
+            module = 'blink.compat.source',
+            score_offset = -3,
+            opts = {
+              use_show_condition = false,
+              show_autosnippets = true,
+            },
           },
         },
       },
