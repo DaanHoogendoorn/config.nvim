@@ -30,11 +30,26 @@ return {
     local user = vim.env.USER or 'User'
     user = user:sub(1, 1):upper() .. user:sub(2)
 
+    local systemPrompt = require('CopilotChat.prompts').COPILOT_INSTRUCTIONS
+    local customPrompt = [[You are an AI programming assistant.
+When writing code, follow these principles:
+1. Handle errors and edge cases early with clear return statements
+2. Use early returns to reduce nesting and improve readability
+3. Keep functions focused and single-purpose
+4. Write clear, descriptive variable and function names
+5. Use consistent formatting and indentation
+6. Add concise comments for complex logic
+7. Prefer readability over cleverness
+8. Return successful results at the end of functions
+
+Please write code following these conventions and explain any significant decisions.]]
+
     chat.setup {
       model = 'claude-3.5-sonnet',
       show_help = true,
       question_header = '  ' .. user .. ' ',
       answer_header = '  Copilot ',
+      system_prompt = systemPrompt .. '\n' .. customPrompt,
       chat_autocomplete = true,
       mappings = {},
       prompts = {
