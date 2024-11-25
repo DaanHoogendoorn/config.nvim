@@ -29,6 +29,7 @@ return {
         mini = {
           enabled = true,
         },
+        snacks = true,
         fidget = true,
         lsp_trouble = true,
         dap = true,
