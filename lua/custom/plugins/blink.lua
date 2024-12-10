@@ -9,7 +9,16 @@ return {
     'saghen/blink.cmp',
     lazy = false, -- lazy loading handled internally
     -- optional: provides snippets for the snippet source
-    dependencies = { 'rafamadriz/friendly-snippets', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+      {
+        'L3MON4D3/LuaSnip',
+        init = function()
+          require 'custom.config.snippets'
+        end,
+      },
+      'saadparwaiz1/cmp_luasnip',
+    },
 
     -- use a release tag to download pre-built binaries
     version = 'v0.*',
