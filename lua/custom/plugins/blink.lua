@@ -12,7 +12,7 @@ return {
     dependencies = { 'rafamadriz/friendly-snippets', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
 
     -- use a release tag to download pre-built binaries
-    version = 'v0.5.*',
+    version = 'v0.*',
     -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
     -- build = 'cargo build --release',
     -- If you use nix, you can build from source using latest nightly rust with:
@@ -21,6 +21,21 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
+      snippets = {
+        expand = function(snippet)
+          require('luasnip').lsp_expand(snippet)
+        end,
+        active = function(filter)
+          if filter and filter.direction then
+            return require('luasnip').jumpable(filter.direction)
+          end
+          return require('luasnip').in_snippet()
+        end,
+        jump = function(direction)
+          require('luasnip').jump(direction)
+        end,
+      },
+
       -- 'default' for mappings similar to built-in completion
       -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
       -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
@@ -47,7 +62,6 @@ return {
       -- adjusts spacing to ensure icons are aligned
       nerd_font_variant = 'normal',
 
-      -- experimental auto-brackets support
       accept = {
         auto_brackets = { enabled = true },
         expand_snippet = function(snippet)
@@ -55,8 +69,9 @@ return {
         end,
       },
 
-      -- experimental signature help support
-      trigger = { signature_help = { enabled = true } },
+      signature = {
+        enabled = true,
+      },
 
       sources = {
         completion = {
