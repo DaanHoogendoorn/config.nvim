@@ -132,9 +132,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- [[ Setup `lazy.nvim` ]]
 require('lazy').setup({
-  -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-
   require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
