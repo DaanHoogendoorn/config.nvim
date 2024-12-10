@@ -1,6 +1,5 @@
 return {
   'CopilotC-Nvim/CopilotChat.nvim',
-  branch = 'canary',
   event = 'BufRead',
   dependencies = {
     { 'zbirenbaum/copilot.lua' },
