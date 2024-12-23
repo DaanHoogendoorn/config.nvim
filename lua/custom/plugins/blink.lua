@@ -30,21 +30,6 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
-      snippets = {
-        expand = function(snippet)
-          require('luasnip').lsp_expand(snippet)
-        end,
-        active = function(filter)
-          if filter and filter.direction then
-            return require('luasnip').jumpable(filter.direction)
-          end
-          return require('luasnip').in_snippet()
-        end,
-        jump = function(direction)
-          require('luasnip').jump(direction)
-        end,
-      },
-
       -- 'default' for mappings similar to built-in completion
       -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
       -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
@@ -67,15 +52,26 @@ return {
         ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
       },
 
-      -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-      -- adjusts spacing to ensure icons are aligned
-      nerd_font_variant = 'normal',
-
-      accept = {
-        auto_brackets = { enabled = true },
-        expand_snippet = function(snippet)
+      snippets = {
+        expand = function(snippet)
           require('luasnip').lsp_expand(snippet)
         end,
+        active = function(filter)
+          if filter and filter.direction then
+            return require('luasnip').jumpable(filter.direction)
+          end
+          return require('luasnip').in_snippet()
+        end,
+        jump = function(direction)
+          require('luasnip').jump(direction)
+        end,
+      },
+
+      completion = {
+        accept = {
+          auto_brackets = { enabled = true },
+        },
+        documentation = { auto_show = true },
       },
 
       signature = {
@@ -83,16 +79,12 @@ return {
       },
 
       sources = {
-        completion = {
-          enabled_providers = { 'lsp', 'path', 'luasnip', 'snippets', 'buffer', 'px-to-rem', 'lazydev' },
-        },
+        default = { 'lsp', 'path', 'luasnip', 'snippets', 'buffer', 'px-to-rem', 'lazydev' },
         providers = {
           lazydev = {
             name = 'lazydev',
             module = 'lazydev.integrations.blink',
-          },
-          lsp = {
-            fallback_for = { 'lazydev' },
+            score_offset = 100,
           },
           ['px-to-rem'] = {
             name = 'px-to-rem',
