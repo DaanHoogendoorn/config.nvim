@@ -191,6 +191,8 @@ return { -- LSP Configuration & Plugins
       yamlls = {},
       --
 
+      ['sonarlint-language-server'] = {},
+
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
@@ -235,6 +237,7 @@ return { -- LSP Configuration & Plugins
       'phpcs',
       'php-cs-fixer',
       'jsonls',
+      'sonarlint-language-server',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
