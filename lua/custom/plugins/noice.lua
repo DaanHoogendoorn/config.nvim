@@ -11,7 +11,7 @@ return {
         enabled = true,
       },
       popupmenu = {
-        enabled = true,
+        enabled = false,
       },
       notify = {
         enabled = false,
