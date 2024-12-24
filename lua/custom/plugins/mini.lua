@@ -24,9 +24,6 @@ return { -- Collection of various small independent plugins/modules
       minifiles.open()
     end, { desc = '[E]xplore' })
 
-    -- cursorword
-    require('mini.cursorword').setup()
-
     -- hipatterns
     require('mini.hipatterns').setup()
 
