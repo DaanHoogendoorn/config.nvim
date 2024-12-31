@@ -87,7 +87,7 @@ return {
         },
       },
       emmet_language_server = {
-        filetypes = { 'html', 'css', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'php', 'blade', 'php_only' },
+        filetypes = { 'html', 'css', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'php', 'blade', 'php_only', 'twig' },
       },
       cssls = {},
       html = {},
