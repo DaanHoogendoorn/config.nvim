@@ -52,34 +52,23 @@ return {
         ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
       },
 
-      snippets = {
-        expand = function(snippet)
-          require('luasnip').lsp_expand(snippet)
-        end,
-        active = function(filter)
-          if filter and filter.direction then
-            return require('luasnip').jumpable(filter.direction)
-          end
-          return require('luasnip').in_snippet()
-        end,
-        jump = function(direction)
-          require('luasnip').jump(direction)
-        end,
-      },
-
       completion = {
         accept = {
           auto_brackets = { enabled = true },
         },
-        documentation = { auto_show = true },
+        documentation = { auto_show = true, auto_show_delay_ms = 500 },
       },
 
       signature = {
         enabled = true,
       },
 
+      snippets = {
+        preset = 'luasnip',
+      },
+
       sources = {
-        default = { 'lsp', 'path', 'luasnip', 'snippets', 'buffer', 'px-to-rem', 'lazydev' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'px-to-rem', 'lazydev' },
         providers = {
           lazydev = {
             name = 'lazydev',
@@ -89,15 +78,6 @@ return {
           ['px-to-rem'] = {
             name = 'px-to-rem',
             module = 'blink.compat.source',
-          },
-          luasnip = {
-            name = 'luasnip',
-            module = 'blink.compat.source',
-            score_offset = -3,
-            opts = {
-              use_show_condition = false,
-              show_autosnippets = true,
-            },
           },
         },
       },
