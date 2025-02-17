@@ -29,7 +29,7 @@ return {
     local user = vim.env.USER or 'User'
     user = user:sub(1, 1):upper() .. user:sub(2)
 
-    local systemPrompt = require('CopilotChat.prompts').COPILOT_INSTRUCTIONS
+    local systemPrompt = require('CopilotChat.config.prompts').COPILOT_INSTRUCTIONS.system_prompt
     local customPrompt = [[You are an AI programming assistant.
 When writing code, follow these principles:
 1. Handle errors and edge cases early with clear return statements
