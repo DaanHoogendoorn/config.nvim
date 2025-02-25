@@ -90,6 +90,7 @@ return {
         filetypes = { 'html', 'css', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'php', 'blade', 'php_only', 'twig' },
       },
       cssls = {},
+      somesass_ls = {},
       html = {},
       jsonls = {
         settings = {
@@ -146,6 +147,7 @@ return {
       'php-cs-fixer',
       'jsonls',
       'sonarlint-language-server',
+      'somesass_ls',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
