@@ -14,6 +14,7 @@ return {
     quickfile = { enabled = true },
     bufdelete = { enabled = true },
     debug = { enabled = true },
+    image = { enabled = true },
     input = { enabled = true },
     lazygit = { enabled = true },
     notify = { enabled = true },
