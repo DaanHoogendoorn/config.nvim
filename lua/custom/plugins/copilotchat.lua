@@ -44,7 +44,7 @@ When writing code, follow these principles:
 Please write code following these conventions and explain any significant decisions.]]
 
     chat.setup {
-      model = 'claude-3.5-sonnet',
+      model = 'claude-3.7-sonnet-thought',
       show_help = true,
       question_header = '  ' .. user .. ' ',
       answer_header = '  Copilot ',
