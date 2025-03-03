@@ -17,14 +17,6 @@ return {
     }
 
     local chat = require 'CopilotChat'
-    local actions = require 'CopilotChat.actions'
-    local telescopeIntegration = require 'CopilotChat.integrations.telescope'
-
-    local function pick(pick_actions)
-      return function()
-        telescopeIntegration.pick(pick_actions())
-      end
-    end
 
     local user = vim.env.USER or 'User'
     user = user:sub(1, 1):upper() .. user:sub(2)
@@ -85,7 +77,7 @@ Please write code following these conventions and explain any significant decisi
 
     vim.keymap.set({ 'n', 'v' }, '<leader>aa', chat.toggle, { desc = '[A]I Toggle' })
     vim.keymap.set({ 'n', 'v' }, '<leader>ax', chat.reset, { desc = '[A]I Reset' })
-    vim.keymap.set({ 'n', 'v' }, '<leader>ap', pick(actions.prompt_actions), { desc = '[A]I [P]rompt Actions' })
+    vim.keymap.set({ 'n', 'v' }, '<leader>ap', chat.select_prompt, { desc = '[A]I [P]rompt Actions' })
 
     vim.keymap.set({ 'n', 'v' }, '<leader>aq', function()
       local input = vim.fn.input 'Quick Chat: '
