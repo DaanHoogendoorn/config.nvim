@@ -8,11 +8,8 @@ return {
   config = function()
     require('refactoring').setup {}
 
-    -- load refactoring Telescope extension
-    require('telescope').load_extension 'refactoring'
-
     vim.keymap.set({ 'n', 'x' }, '<leader>rr', function()
-      require('telescope').extensions.refactoring.refactors()
+      require('refactoring').select_refactor { prefer_ex_cmd = true }
     end)
   end,
 }

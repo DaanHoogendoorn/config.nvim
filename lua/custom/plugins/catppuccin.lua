@@ -11,9 +11,6 @@ return {
       flavour = 'mocha',
       transparent_background = true,
       integrations = {
-        telescope = {
-          enabled = true,
-        },
         gitsigns = true,
         gitgutter = true,
         mason = true,
