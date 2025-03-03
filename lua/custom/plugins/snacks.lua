@@ -152,13 +152,6 @@ return {
       desc = 'Smart Find Files',
     },
     {
-      '<leader>,',
-      function()
-        Snacks.picker.buffers()
-      end,
-      desc = 'Buffers',
-    },
-    {
       '<leader>sg',
       function()
         Snacks.picker.grep()
@@ -179,14 +172,6 @@ return {
       end,
       desc = 'Notification History',
     },
-    -- {
-    --   '<leader>e',
-    --   function()
-    --     Snacks.explorer()
-    --   end,
-    --   desc = 'File Explorer',
-    -- },
-    -- find
     {
       '<leader>sn',
       function()
