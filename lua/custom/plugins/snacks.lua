@@ -5,6 +5,7 @@ return {
   ---@module 'snacks'
   ---@type snacks.Config
   opts = {
+    animate = { enabled = true, fps = 120, easing = 'inOutQuad' },
     bigfile = { enabled = true },
     notifier = {
       enabled = true,
