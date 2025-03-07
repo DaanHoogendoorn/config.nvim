@@ -19,7 +19,7 @@ return {
     input = { enabled = true },
     lazygit = { enabled = true },
     notify = { enabled = true },
-    picker = { enabled = true },
+    picker = { enabled = true, matcher = { cwd_bonus = true, frecency = true, sort_empty = true } },
     rename = { enabled = true },
     scroll = { enabled = true },
     toggle = { enabled = true },
