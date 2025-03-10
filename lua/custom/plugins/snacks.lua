@@ -148,7 +148,7 @@ return {
     {
       '<leader><space>',
       function()
-        Snacks.picker.smart()
+        Snacks.picker.smart { multi = { 'buffers', 'files' } }
       end,
       desc = 'Smart Find Files',
     },
