@@ -105,6 +105,7 @@ return {
       },
       marksman = {},
       yamlls = {},
+      harper_ls = {},
       --
 
       ['sonarlint-language-server'] = {},
