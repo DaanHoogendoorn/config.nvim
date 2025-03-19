@@ -52,6 +52,7 @@ return {
             background = true,
           },
         },
+        octo = true,
       },
     }
 
