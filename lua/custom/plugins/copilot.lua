@@ -15,6 +15,7 @@ return {
             next = '<C-c>',
           },
         },
+        copilot_model = 'gpt-4o-copilot',
       }
 
       local suggestion = require 'copilot.suggestion'
