@@ -160,6 +160,9 @@ require('lazy').setup({
   },
 })
 
+-- Enable virtual text for diagnostics
+vim.diagnostic.config { virtual_text = true }
+
 -- Cycle through buffer with tab and shift-tab
 vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true })
