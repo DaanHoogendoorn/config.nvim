@@ -11,7 +11,7 @@ return {
           enabled = true,
           auto_trigger = vim.g.copilot_auto_trigger_enabled, -- this can be toggled using <leader>tc
           keymap = {
-            accept = false,
+            accept = '<C-w>',
             next = '<C-c>',
           },
         },
@@ -19,15 +19,6 @@ return {
       }
 
       local suggestion = require 'copilot.suggestion'
-
-      vim.keymap.set('i', '<Tab>', function()
-        if suggestion.is_visible() then
-          suggestion.accept()
-        else
-          -- insert a tab
-          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, true, true), 'n', true)
-        end
-      end, { desc = 'Accept suggestion' })
 
       Snacks.toggle
         .new({
