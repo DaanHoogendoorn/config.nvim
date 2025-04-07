@@ -67,6 +67,9 @@ return {
             module = 'blink.compat.source',
           },
         },
+        per_filetype = {
+          codecompanion = { 'codecompanion' },
+        },
       },
     },
     -- allows extending the enabled_providers array elsewhere in your config
