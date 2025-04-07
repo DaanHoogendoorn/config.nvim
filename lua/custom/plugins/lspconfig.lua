@@ -77,7 +77,6 @@ return {
           ['language_server_worse_reflection.inlay_hints.enable'] = true,
           ['language_server_worse_reflection.inlay_hints.params'] = true,
           ['language_server_worse_reflection.inlay_hints.types'] = true,
-          ['language_server_completion.trim_leading_dollar'] = true,
         },
       },
       emmet_language_server = {
