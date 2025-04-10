@@ -7,7 +7,11 @@ return {
 
   config = function()
     local markview = require 'markview'
-    markview.setup()
+    markview.setup {
+      preview = {
+        filetypes = { 'markdown', 'codecompanion' },
+      },
+    }
 
     Snacks.toggle
       .new({
