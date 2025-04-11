@@ -4,7 +4,7 @@ return {
     event = 'InsertEnter',
     command = 'Copilot',
     config = function()
-      vim.g.copilot_auto_trigger_enabled = false
+      vim.g.copilot_auto_trigger_enabled = true
 
       require('copilot').setup {
         suggestion = {
