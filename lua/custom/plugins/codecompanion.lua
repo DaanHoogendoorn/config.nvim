@@ -72,7 +72,10 @@ return {
     -- Key mappings for codecompanion
     vim.keymap.set({ 'n', 'v' }, '<leader>aa', '<cmd>CodeCompanionChat Toggle<cr>', { noremap = true, silent = true, desc = 'Toggle Code Companion chat' })
     vim.keymap.set({ 'n', 'v' }, '<leader>ap', '<cmd>CodeCompanionActions<cr>', { noremap = true, silent = true, desc = 'Open Code Companion actions menu' })
-    vim.keymap.set({ 'v' }, '<leader>ad', function()
+    vim.keymap.set({ 'n', 'v' }, '<leader>ad', function()
+      if vim.api.nvim_get_mode().mode == 'n' then
+        vim.cmd 'normal! ggVG'
+      end
       codecompanion.prompt 'docs'
     end, { noremap = true, silent = true, desc = 'Generate documentation for selected code' })
     vim.keymap.set({ 'v' }, '<leader>ae', function()
@@ -81,6 +84,13 @@ return {
     vim.keymap.set({ 'v' }, '<leader>af', function()
       codecompanion.prompt 'fix'
     end, { noremap = true, silent = true, desc = 'Fix issues in selected code' })
+    vim.keymap.set({ 'n', 'v' }, '<leader>at', function()
+      -- select entire buffer if no selection is present
+      if vim.api.nvim_get_mode().mode == 'n' then
+        vim.cmd 'normal! ggVG'
+      end
+      vim.cmd 'CodeCompanion finish the todos in the selected code'
+    end, { noremap = true, silent = true, desc = 'Finish the todos' })
 
     -- Command alias for CodeCompanion
     vim.cmd [[cab cc CodeCompanion]]
