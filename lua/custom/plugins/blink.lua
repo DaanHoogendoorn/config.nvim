@@ -18,6 +18,7 @@ return {
         end,
       },
       'saadparwaiz1/cmp_luasnip',
+      'Kaiser-Yang/blink-cmp-avante',
     },
 
     -- use a release tag to download pre-built binaries
@@ -55,7 +56,7 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'px-to-rem', 'lazydev' },
+        default = { 'avante', 'lsp', 'path', 'snippets', 'buffer', 'px-to-rem', 'lazydev' },
         providers = {
           lazydev = {
             name = 'lazydev',
@@ -66,9 +67,14 @@ return {
             name = 'px-to-rem',
             module = 'blink.compat.source',
           },
+          avante = {
+            module = 'blink-cmp-avante',
+            name = 'Avante',
+            opts = {},
+          },
         },
         per_filetype = {
-          codecompanion = { 'codecompanion' },
+          ['AvanteInput'] = { 'avante' },
         },
       },
     },

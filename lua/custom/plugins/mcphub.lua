@@ -6,6 +6,12 @@ return {
   cmd = 'MCPHub',
   build = 'npm install -g mcp-hub@latest',
   config = function()
-    require('mcphub').setup()
+    require('mcphub').setup {
+      extensions = {
+        avante = {
+          make_slash_commands = true,
+        },
+      },
+    }
   end,
 }

@@ -22,6 +22,9 @@ vim.opt.number = true
 --  Experiment for yourself to see if you like it!
 vim.opt.relativenumber = true
 
+-- disable status line when not required
+vim.opt.laststatus = 3
+
 -- Set tab width
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

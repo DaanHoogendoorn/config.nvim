@@ -11,6 +11,7 @@ return {
       flavour = 'mocha',
       transparent_background = true,
       integrations = {
+        -- avante = true,
         gitsigns = true,
         gitgutter = true,
         mason = true,

@@ -18,7 +18,6 @@ return {
         },
         sections = {
           lualine_x = {
-            require 'custom.config.codecompanion-lualine',
             {
               'copilot',
               symbols = {
