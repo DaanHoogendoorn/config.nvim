@@ -19,6 +19,12 @@ return {
         require('mcphub.extensions.avante').mcp_tool(),
       }
     end,
+    mappings = {
+      diff = {
+        ours = 'gr',
+        theirs = 'ga',
+      },
+    },
   },
   init = function()
     vim.keymap.set({ 'n', 'v' }, '<leader>ad', function()
