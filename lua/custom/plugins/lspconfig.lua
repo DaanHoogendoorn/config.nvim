@@ -104,7 +104,15 @@ return {
       },
       marksman = {},
       yamlls = {},
-      harper_ls = {},
+      harper_ls = {
+        settings = {
+          ['harper-ls'] = {
+            linters = {
+              SentenceCapitalization = false,
+            },
+          },
+        },
+      },
       --
 
       ['sonarlint-language-server'] = {},
