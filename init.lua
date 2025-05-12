@@ -243,3 +243,5 @@ end, { desc = '[I]nsert [f]iglet', noremap = true, silent = true })
 require('custom.config.selectquotes').setup {
   key = 'q',
 }
+
+require 'custom.config.lazyblock_info'
