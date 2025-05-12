@@ -7,6 +7,18 @@ return {
     copilot = {
       model = 'claude-3.7-sonnet',
     },
+    disabled_tools = {
+      'list_files',
+      'search_files',
+      'read_file',
+      'create_file',
+      'rename_file',
+      'delete_file',
+      'create_dir',
+      'rename_dir',
+      'delete_dir',
+      'bash',
+    },
     system_prompt = function()
       local hub = require('mcphub').get_hub_instance()
       if hub == nil then
