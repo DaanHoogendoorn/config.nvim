@@ -90,96 +90,7 @@ return {
 
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-    local tsserver_inlay_hints_settings = {
-      includeInlayEnumMemberValueHints = true,
-      includeInlayFunctionLikeReturnTypeHints = true,
-      includeInlayFunctionParameterTypeHints = true,
-      includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all';
-      includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-      includeInlayPropertyDeclarationTypeHints = true,
-      includeInlayVariableTypeHints = true,
-    }
-
-    local servers = {
-      ts_ls = {
-        settings = {
-          javascript = {
-            inlayHints = tsserver_inlay_hints_settings,
-          },
-          javascriptreact = {
-            inlayHints = tsserver_inlay_hints_settings,
-          },
-          typescript = {
-            inlayHints = tsserver_inlay_hints_settings,
-          },
-          typescriptreact = {
-            inlayHints = tsserver_inlay_hints_settings,
-          },
-        },
-      },
-      phpactor = {
-        filetypes = { 'php', 'blade', 'php_only' },
-        init_options = {
-          ['language_server_worse_reflection.inlay_hints.enable'] = true,
-          ['language_server_worse_reflection.inlay_hints.params'] = true,
-          ['language_server_worse_reflection.inlay_hints.types'] = true,
-        },
-      },
-      emmet_language_server = {
-        single_file_support = true,
-        filetypes = { 'html', 'css', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'php', 'blade', 'php_only', 'twig' },
-      },
-      cssls = {},
-      somesass_ls = {},
-      html = {},
-      jsonls = {
-        settings = {
-          validate = { enable = true },
-        },
-      },
-      rust_analyzer = {
-        settings = {
-          ['rust-analyzer'] = {
-            inlayHints = {
-              typeHints = true,
-              parameterHints = true,
-              chainingHints = true,
-              maxLength = 120,
-            },
-          },
-        },
-      },
-      marksman = {},
-      yamlls = {},
-      harper_ls = {
-        settings = {
-          ['harper-ls'] = {
-            linters = {
-              SentenceCapitalization = false,
-            },
-          },
-        },
-      },
-      --
-
-      ['sonarlint-language-server'] = {},
-
-      lua_ls = {
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = 'Replace',
-            },
-            hint = {
-              enable = true,
-            },
-          },
-        },
-      },
-    }
-
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
+    local ensure_installed = {
       'stylua',
       'prettier',
       'prettierd',
@@ -187,17 +98,11 @@ return {
       'css_variables',
       'phpcs',
       'php-cs-fixer',
-    })
+    }
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     require('mason-lspconfig').setup {
-      handlers = {
-        function(server_name)
-          local server = servers[server_name] or {}
-          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          require('lspconfig')[server_name].setup(server)
-        end,
-      },
+      ensure_installed = {},
     }
   end,
 }
