@@ -13,7 +13,6 @@ return {
       integrations = {
         -- avante = true,
         gitsigns = true,
-        gitgutter = true,
         mason = true,
         markdown = true,
         noice = true,
