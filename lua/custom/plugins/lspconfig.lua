@@ -6,7 +6,7 @@ return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     'saghen/blink.cmp',
 
-    { 'j-hui/fidget.nvim', opts = {} },
+    { 'j-hui/fidget.nvim', event = 'LspAttach', opts = {} },
   },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
