@@ -8,7 +8,7 @@ return {
 
       require('copilot').setup {
         suggestion = {
-          enabled = true,
+          enabled = false,
           auto_trigger = vim.g.copilot_auto_trigger_enabled, -- this can be toggled using <leader>tc
           keymap = {
             accept = '<C-w>',
