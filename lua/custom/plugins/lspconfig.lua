@@ -88,8 +88,7 @@ return {
       },
     }
 
-    local capabilities = require('blink.cmp').get_lsp_capabilities()
-
+    local servers = require('custom.config.utils').get_config_lsp_names()
     local ensure_installed = {
       'stylua',
       'prettier',
@@ -99,10 +98,11 @@ return {
       'phpcs',
       'php-cs-fixer',
     }
+
+    ensure_installed = vim.tbl_extend('force', servers, ensure_installed)
+
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-    require('mason-lspconfig').setup {
-      ensure_installed = {},
-    }
+    vim.lsp.enable(servers)
   end,
 }
