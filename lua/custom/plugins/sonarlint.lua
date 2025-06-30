@@ -1,5 +1,6 @@
 return {
   'https://gitlab.com/schrieveslaach/sonarlint.nvim',
+  event = 'BufRead',
   config = function()
     require('sonarlint').setup {
       server = {
