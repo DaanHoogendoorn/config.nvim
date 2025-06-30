@@ -11,7 +11,7 @@ return {
     opts = {
       library = {
         'lazy.nvim',
-        { path = 'wezterm-types', mods = { 'wezterm' } },
+        { path = 'snacks.nvim', words = { 'Snacks' } },
       },
     },
   },
