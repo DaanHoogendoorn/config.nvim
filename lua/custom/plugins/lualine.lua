@@ -1,7 +1,7 @@
 return {
   {
     'nvim-lualine/lualine.nvim',
-    event = 'VimEnter',
+    event = 'VeryLazy',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('lualine').setup {
@@ -18,21 +18,6 @@ return {
         },
         sections = {
           lualine_x = {
-            { require 'mcphub.extensions.lualine' },
-            {
-              'copilot',
-              symbols = {
-                status = {
-                  icons = {
-                    enabled = ' ',
-                    sleep = ' ', -- auto-trigger disabled
-                    disabled = ' ',
-                    warning = ' ',
-                    unknown = ' ',
-                  },
-                },
-              },
-            },
             {
               require('lazy.status').updates,
               cond = require('lazy.status').has_updates,

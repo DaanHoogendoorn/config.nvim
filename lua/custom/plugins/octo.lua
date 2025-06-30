@@ -1,5 +1,6 @@
 return {
   'pwntester/octo.nvim',
+  command = 'Octo',
   dependencies = {
     'nvim-lua/plenary.nvim',
     'folke/snacks.nvim',
