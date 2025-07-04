@@ -1,5 +1,7 @@
 return {
   'CopilotC-Nvim/CopilotChat.nvim',
+  event = 'BufRead',
+  command = { 'CopilotChat', 'CopilotChatOpen', 'CopilotChatClose' },
   dependencies = {
     { 'zbirenbaum/copilot.lua' },
     { 'nvim-lua/plenary.nvim', branch = 'master' },
@@ -8,6 +10,6 @@ return {
   config = function()
     require('CopilotChat').setup()
 
-    vim.keymap.set({ 'n', 'x' }, '<leader>aa', ':CopilotChatOpen<CR>')
+    vim.keymap.set('n', '<leader>aa', ':CopilotChatOpen<CR>')
   end,
 }
