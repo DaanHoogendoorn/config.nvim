@@ -90,10 +90,10 @@ return {
 
             keymaps = {
               -- You can use the capture groups defined in textobjects.scm
-              ['aF'] = '@function.outer',
-              ['iF'] = '@function.inner',
-              ['af'] = '@call.outer',
-              ['if'] = '@call.inner',
+              ['af'] = '@function.outer',
+              ['if'] = '@function.inner',
+              ['aF'] = '@call.outer',
+              ['iF'] = '@call.inner',
               ['aC'] = '@class.outer',
               ['iC'] = { query = '@class.inner', desc = 'Select inner part of a class region' },
               ['ic'] = '@comment.inner',
