@@ -250,3 +250,5 @@ require('custom.config.selectquotes').setup {
 }
 
 require 'custom.config.lazyblock_info'
+
+vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
