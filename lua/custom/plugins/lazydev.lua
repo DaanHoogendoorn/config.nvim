@@ -6,6 +6,7 @@ return {
       library = {
         'lazy.nvim',
         { path = 'snacks.nvim', words = { 'Snacks' } },
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
       },
     },
   },
