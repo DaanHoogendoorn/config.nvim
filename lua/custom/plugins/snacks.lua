@@ -233,14 +233,14 @@ return {
       desc = 'Buffer Lines',
     },
     {
-      '<leader>sc',
+      '<leader>sC',
       function()
         Snacks.picker.command_history()
       end,
       desc = 'Command History',
     },
     {
-      '<leader>sC',
+      '<leader>sc',
       function()
         Snacks.picker.commands()
       end,
