@@ -29,7 +29,7 @@ return { -- Autoformat
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        php = { 'pint', 'php_cs_fixer', 'prettierd', 'prettier', stop_after_first = true },
+        php = { 'php_cs_fixer', 'prettierd', 'prettier', stop_after_first = true },
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
@@ -38,6 +38,12 @@ return { -- Autoformat
         scss = { 'prettierd', 'prettier', stop_after_first = true },
         xml = { 'prettierd', 'prettier', stop_after_first = true },
         rust = { 'rustfmt' },
+      },
+      formatters = {
+        php_cs_fixer = {
+          command = vim.fn.exepath 'php-cs-fixer',
+          args = { 'fix', '$FILENAME' },
+        },
       },
     }
 
