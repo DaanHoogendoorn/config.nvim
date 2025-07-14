@@ -249,3 +249,26 @@ require('custom.config.selectquotes').setup {
 require 'custom.config.lazyblock_info'
 
 vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
+
+vim.keymap.set('n', '<leader>ao', function()
+  local has_opencode = vim.fn.executable 'opencode'
+  local has_tmux = vim.fn.executable 'tmux'
+
+  if not has_opencode or not has_tmux then
+    vim.notify 'opencode and tmux are required'
+    return
+  end
+
+  -- check if in a tmux session
+  if vim.env.TMUX == nil then
+    vim.notify 'Not in a tmux session'
+    return
+  end
+
+  local splitw_command = 'splitw'
+  if vim.o.columns > 140 then
+    splitw_command = 'splitw -h'
+  end
+
+  vim.cmd('silent !tmux ' .. splitw_command .. ' opencode')
+end, { silent = true, desc = '[A]i [o]pencode' })
