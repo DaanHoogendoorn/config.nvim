@@ -1,125 +1,108 @@
-# config.nvim/
-
 <a href="https://dotfyle.com/DaanHoogendoorn/confignvim"><img src="https://dotfyle.com/DaanHoogendoorn/confignvim/badges/plugins?style=flat" /></a>
 <a href="https://dotfyle.com/DaanHoogendoorn/confignvim"><img src="https://dotfyle.com/DaanHoogendoorn/confignvim/badges/leaderkey?style=flat" /></a>
 <a href="https://dotfyle.com/DaanHoogendoorn/confignvim"><img src="https://dotfyle.com/DaanHoogendoorn/confignvim/badges/plugin-manager?style=flat" /></a>
 
+# Neovim Config
 
-## Install Instructions
+A modular, modern Neovim configuration with a focus on maintainability, plugin modularity, and language support.
 
- > Install requires Neovim 0.9+. Always review the code before installing a configuration.
+---
 
-Clone the repository and install the plugins:
+## Features
+
+- **Modular plugin management**: Each plugin in its own file under `lua/custom/plugins/`
+- **Custom configuration**: Utilities, snippets, and helpers in `lua/custom/config/`
+- **Comprehensive LSP support**: Custom LSP configs for many languages in `after/lsp/`
+- **Modern UI/UX**: Statusline, colorscheme, notifications, and more
+- **AI/Completion**: Copilot, CopilotChat, and more
+- **Fuzzy finding/picking**: Powered by the snacks picker
+
+---
+
+## Installation
+
+> Requires Neovim 0.9+  
+> Always review code before installing any configuration.
+
+Clone this repository into your Neovim config directory:
 
 ```sh
-git clone git@github.com:DaanHoogendoorn/config.nvim ~/.config/DaanHoogendoorn/config.nvim
+git clone git@github.com:DaanHoogendoorn/config.nvim ~/.config/nvim
 ```
 
-Open Neovim with this config:
+Launch Neovim and install plugins:
 
 ```sh
-NVIM_APPNAME=DaanHoogendoorn/config.nvim/ nvim
+nvim
+# Then run :Lazy sync
 ```
 
-## Plugins
+Update Treesitter parsers (recommended):
 
-### ai
+```sh
+:TSUpdate
+```
 
-+ [CopilotC-Nvim/CopilotChat.nvim](https://dotfyle.com/plugins/CopilotC-Nvim/CopilotChat.nvim)
-+ [David-Kunz/gen.nvim](https://dotfyle.com/plugins/David-Kunz/gen.nvim)
-### colorscheme
+---
 
-+ [catppuccin/nvim](https://dotfyle.com/plugins/catppuccin/nvim)
-### comment
+## Directory Structure
 
-+ [folke/todo-comments.nvim](https://dotfyle.com/plugins/folke/todo-comments.nvim)
-+ [folke/ts-comments.nvim](https://dotfyle.com/plugins/folke/ts-comments.nvim)
-### completion
+- `init.lua` – Entry point
+- `lua/custom/plugins/` – Modular plugin specifications
+- `lua/custom/config/` – Custom config, snippets, utilities
+- `after/lsp/` – Per-language LSP configuration. Also used for auto installation of LSP servers.
 
-+ [zbirenbaum/copilot.lua](https://dotfyle.com/plugins/zbirenbaum/copilot.lua)
-### debugging
+---
 
-+ [rcarriga/nvim-dap-ui](https://dotfyle.com/plugins/rcarriga/nvim-dap-ui)
-+ [mfussenegger/nvim-dap](https://dotfyle.com/plugins/mfussenegger/nvim-dap)
-### diagnostics
+## Notable Plugins
 
-+ [folke/trouble.nvim](https://dotfyle.com/plugins/folke/trouble.nvim)
-### editing-support
+- **AI/Completion**: Copilot, CopilotChat, Supermaven
+- **UI/UX**: catppuccin, lualine, noice, dressing, blink, snacks
+- **Editing**: autopairs, autotag, surround, treesitter, treesj, highlightundo
+- **Git**: gitsigns, octo
+- **Fuzzy Finder / Picker**: snacks
+- **LSP**: nvim-lspconfig, mason, fidget, sonarlint, lazydev
+- **Formatting/Linting**: conform, nvim-lint
+- **Snippets**: LuaSnip, friendly-snippets
+- **File Explorer**: mini.files
+- **Keybinding**: which-key
+- **Troubleshooting**: trouble, todo-comments, ts-comments
 
-+ [windwp/nvim-autopairs](https://dotfyle.com/plugins/windwp/nvim-autopairs)
-+ [windwp/nvim-ts-autotag](https://dotfyle.com/plugins/windwp/nvim-ts-autotag)
-+ [nvim-treesitter/nvim-treesitter-context](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-context)
-+ [Wansmer/treesj](https://dotfyle.com/plugins/Wansmer/treesj)
-+ [folke/snacks.nvim](https://dotfyle.com/plugins/folke/snacks.nvim)
-+ [tzachar/highlight-undo.nvim](https://dotfyle.com/plugins/tzachar/highlight-undo.nvim)
-### file-explorer
+(See `lua/custom/plugins/` for the full list.)
 
-+ [echasnovski/mini.files](https://dotfyle.com/plugins/echasnovski/mini.files)
-### formatting
+---
 
-+ [stevearc/conform.nvim](https://dotfyle.com/plugins/stevearc/conform.nvim)
-### fuzzy-finder
+## Supported Language Servers
 
-+ [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
-### git
+Custom LSP configs for:
 
-+ [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
-### icon
+- CSS (`cssls`, `css-variables-language-server`)
+- Emmet (`emmet_language_server`)
+- Go (`gopls`)
+- HarperDB (`harper_ls`)
+- HTML (`html`)
+- JSON (`jsonls`)
+- Lua (`lua_ls`)
+- Markdown (`marksman`)
+- PHP (`phpactor`)
+- Rust (`rust_analyzer`)
+- Sass (`somesass_ls`)
+- SonarLint (`sonarlint-language-server`)
+- TypeScript (`ts_ls`)
+- YAML (`yamlls`)
 
-+ [nvim-tree/nvim-web-devicons](https://dotfyle.com/plugins/nvim-tree/nvim-web-devicons)
-### indent
+---
 
-+ [lukas-reineke/indent-blankline.nvim](https://dotfyle.com/plugins/lukas-reineke/indent-blankline.nvim)
-### keybinding
+## Usage & Maintenance
 
-+ [folke/which-key.nvim](https://dotfyle.com/plugins/folke/which-key.nvim)
-### lsp
+- **Install Plugins:** `:Lazy sync`
+- **Update Plugins:** `:Lazy update`
+- **Update Treesitter Parsers:** `:TSUpdate`
+- **Lint/Format:** `stylua .` (uses `.stylua.toml`)
+- **Test:** Launch Neovim and verify config/plugins load without errors
 
-+ [j-hui/fidget.nvim](https://dotfyle.com/plugins/j-hui/fidget.nvim)
-+ [mfussenegger/nvim-lint](https://dotfyle.com/plugins/mfussenegger/nvim-lint)
-+ [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
-### lsp-installer
+---
 
-+ [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
-### markdown-and-latex
+## License
 
-+ [OXY2DEV/markview.nvim](https://dotfyle.com/plugins/OXY2DEV/markview.nvim)
-### nvim-dev
-
-+ [folke/lazydev.nvim](https://dotfyle.com/plugins/folke/lazydev.nvim)
-+ [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
-+ [MunifTanjim/nui.nvim](https://dotfyle.com/plugins/MunifTanjim/nui.nvim)
-+ [OXY2DEV/helpview.nvim](https://dotfyle.com/plugins/OXY2DEV/helpview.nvim)
-### plugin-manager
-
-+ [folke/lazy.nvim](https://dotfyle.com/plugins/folke/lazy.nvim)
-### quickfix
-
-+ [stevearc/quicker.nvim](https://dotfyle.com/plugins/stevearc/quicker.nvim)
-### snippet
-
-+ [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
-+ [rafamadriz/friendly-snippets](https://dotfyle.com/plugins/rafamadriz/friendly-snippets)
-### statusline
-
-+ [AndreM222/copilot-lualine](https://dotfyle.com/plugins/AndreM222/copilot-lualine)
-+ [nvim-lualine/lualine.nvim](https://dotfyle.com/plugins/nvim-lualine/lualine.nvim)
-### syntax
-
-+ [nvim-treesitter/nvim-treesitter-textobjects](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-textobjects)
-+ [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
-### utility
-
-+ [folke/noice.nvim](https://dotfyle.com/plugins/folke/noice.nvim)
-+ [stevearc/dressing.nvim](https://dotfyle.com/plugins/stevearc/dressing.nvim)
-## Language Servers
-
-+ cssls
-+ eslint
-+ html
-+ jsonls
-+ phpactor
-+ tflint
-
-
- This readme was generated by [Dotfyle](https://dotfyle.com)
+MIT
