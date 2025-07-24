@@ -45,13 +45,6 @@ vim.api.nvim_set_keymap('n', '<leader>;', 'mmA;<Esc>`m', { desc = 'Add semicolon
 -- add comma to the end of the line
 vim.api.nvim_set_keymap('n', '<leader>,', 'mmA,<Esc>`m', { desc = 'Add comma to end of line', noremap = true, silent = true })
 
-local wk = require 'which-key'
-
-wk.add {
-  { '<leader>i', group = '[I]nsert' },
-  { '<leader>i_', desc = 'whick_key_ignore' },
-}
-
 -- easy figlet input
 vim.keymap.set('n', '<leader>if', function()
   if vim.fn.executable 'figlet' == 1 then
