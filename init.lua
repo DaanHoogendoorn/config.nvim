@@ -8,5 +8,4 @@ require 'core.lazy'
 require('custom.config.selectquotes').setup {
   key = 'q',
 }
-
-require 'custom.config.lazyblock_info'
+require 'config.lazyblock_info'
