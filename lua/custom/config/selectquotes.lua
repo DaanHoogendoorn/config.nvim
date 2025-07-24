@@ -1,4 +1,4 @@
-local utils = require 'custom.config.utils'
+local utils = require 'config.utils'
 
 local M = {}
 

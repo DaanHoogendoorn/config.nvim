@@ -84,7 +84,7 @@ return {
       },
     }
 
-    local servers = require('custom.config.utils').get_config_lsp_names()
+    local servers = require('config.utils').get_config_lsp_names()
     local ensure_installed = {
       'stylua',
       'prettier',
