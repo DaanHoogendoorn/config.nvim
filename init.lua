@@ -5,7 +5,4 @@ require 'config.usercommands'
 
 require 'core.lazy'
 
-require('custom.config.selectquotes').setup {
-  key = 'q',
-}
 require 'config.lazyblock_info'
