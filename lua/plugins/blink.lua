@@ -12,7 +12,7 @@ return {
         'L3MON4D3/LuaSnip',
         event = 'BufRead',
         init = function()
-          require 'custom.config.snippets'
+          require 'config.snippets'
         end,
       },
     },
