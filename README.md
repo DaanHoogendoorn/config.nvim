@@ -1,7 +1,3 @@
-<a href="https://dotfyle.com/DaanHoogendoorn/confignvim"><img src="https://dotfyle.com/DaanHoogendoorn/confignvim/badges/plugins?style=flat" /></a>
-<a href="https://dotfyle.com/DaanHoogendoorn/confignvim"><img src="https://dotfyle.com/DaanHoogendoorn/confignvim/badges/leaderkey?style=flat" /></a>
-<a href="https://dotfyle.com/DaanHoogendoorn/confignvim"><img src="https://dotfyle.com/DaanHoogendoorn/confignvim/badges/plugin-manager?style=flat" /></a>
-
 # Neovim Config
 
 A modular, modern Neovim configuration with a focus on maintainability, plugin modularity, and language support.
@@ -10,8 +6,8 @@ A modular, modern Neovim configuration with a focus on maintainability, plugin m
 
 ## Features
 
-- **Modular plugin management**: Each plugin in its own file under `lua/custom/plugins/`
-- **Custom configuration**: Utilities, snippets, and helpers in `lua/custom/config/`
+- **Modular plugin management**: Each plugin in its own file under `lua/plugins/`
+- **Custom configuration**: Utilities, snippets, and helpers in `lua/config/`
 - **Comprehensive LSP support**: Custom LSP configs for many languages in `after/lsp/`
 - **Modern UI/UX**: Statusline, colorscheme, notifications, and more
 - **AI/Completion**: Copilot, CopilotChat, and more
@@ -48,8 +44,8 @@ Update Treesitter parsers (recommended):
 ## Directory Structure
 
 - `init.lua` – Entry point
-- `lua/custom/plugins/` – Modular plugin specifications
-- `lua/custom/config/` – Custom config, snippets, utilities
+- `lua/plugins/` – Modular plugin specifications
+- `lua/config/` – Custom config, snippets, utilities
 - `after/lsp/` – Per-language LSP configuration. Also used for auto installation of LSP servers.
 
 ---
@@ -68,7 +64,7 @@ Update Treesitter parsers (recommended):
 - **Keybinding**: which-key
 - **Troubleshooting**: trouble, todo-comments, ts-comments
 
-(See `lua/custom/plugins/` for the full list.)
+(See `lua/plugins/` for the full list.)
 
 ---
 
