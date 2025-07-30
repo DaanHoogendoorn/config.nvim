@@ -1,3 +1,7 @@
+<a href="https://dotfyle.com/DaanHoogendoorn/confignvim"><img src="https://dotfyle.com/DaanHoogendoorn/confignvim/badges/plugins?style=flat" /></a>
+<a href="https://dotfyle.com/DaanHoogendoorn/confignvim"><img src="https://dotfyle.com/DaanHoogendoorn/confignvim/badges/leaderkey?style=flat" /></a>
+<a href="https://dotfyle.com/DaanHoogendoorn/confignvim"><img src="https://dotfyle.com/DaanHoogendoorn/confignvim/badges/plugin-manager?style=flat" /></a>
+
 # Neovim Config
 
 A modular, modern Neovim configuration with a focus on maintainability, plugin modularity, and language support.
