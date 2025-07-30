@@ -11,8 +11,9 @@ return {
       flavour = 'mocha',
       transparent_background = true,
       integrations = {
-        -- avante = true,
+        flash = true,
         gitsigns = true,
+        harpoon = true,
         mason = true,
         markdown = true,
         noice = true,
@@ -29,8 +30,6 @@ return {
         snacks = true,
         fidget = true,
         lsp_trouble = true,
-        dap = true,
-        dap_ui = true,
         blink_cmp = true,
         native_lsp = {
           enabled = true,
