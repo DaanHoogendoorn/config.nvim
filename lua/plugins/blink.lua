@@ -15,6 +15,7 @@ return {
           require 'config.snippets'
         end,
       },
+      'Kaiser-Yang/blink-cmp-avante',
     },
 
     -- use a release tag to download pre-built binaries
@@ -43,13 +44,21 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'lazydev', 'path', 'snippets', 'buffer' },
+        default = { 'lsp', 'avante', 'lazydev', 'path', 'snippets', 'buffer' },
         providers = {
           lazydev = {
             name = 'lazydev',
             module = 'lazydev.integrations.blink',
             score_offset = 100,
           },
+          avante = {
+            module = 'blink-cmp-avante',
+            name = 'Avante',
+            opts = {},
+          },
+        },
+        per_filetype = {
+          ['AvanteInput'] = { 'avante' },
         },
       },
     },
