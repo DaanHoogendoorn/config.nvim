@@ -3,6 +3,8 @@ return {
   event = 'VeryLazy',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
+    vim.opt.laststatus = 3
+
     require('lualine').setup {
       options = {
         theme = 'catppuccin',

@@ -9,12 +9,20 @@ return {
         model = 'gpt-4.1',
       },
     },
+    selector = {
+      provider = 'snacks',
+    },
+    input = {
+      provider = 'snacks',
+      provider_opts = {
+        -- Additional snacks.input options
+        title = 'Avante Input',
+        icon = ' ',
+      },
+    },
     system_prompt = function()
       local hub = require('mcphub').get_hub_instance()
-      if hub == nil then
-        return nil
-      end
-      return hub:get_active_servers_prompt()
+      return hub and hub:get_active_servers_prompt() or ''
     end,
     custom_tools = function()
       return {
