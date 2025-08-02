@@ -111,7 +111,7 @@ return {
       }
     end, {})
   end,
-  setings = {
+  settings = {
     javascript = {
       inlayHints = tsserver_inlay_hints_settings,
     },
