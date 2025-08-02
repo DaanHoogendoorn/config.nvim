@@ -10,7 +10,7 @@ M.select_between = function(pos_start, pos_end)
 end
 
 M.get_config_lsp_names = function()
-  local directory = vim.fn.stdpath 'config' .. '/after/lsp/'
+  local directory = vim.fn.stdpath 'config' .. '/lsp/'
   local files = vim.fn.glob(directory .. '*.lua', true, true)
   local names = {}
   for _, file in ipairs(files) do
