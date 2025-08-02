@@ -59,7 +59,7 @@ end
 
 adapt_servers_from_root_markers_json()
 
--- Start all the server that have a config
+-- Start all the servers that have a config
 vim.lsp.enable(utils.get_config_lsp_names())
 
 -- Set up diagnostics
