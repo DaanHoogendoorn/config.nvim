@@ -20,4 +20,24 @@ M.get_config_lsp_names = function()
   return names
 end
 
+--- Merge two lists, preserving order and uniqueness.
+--- @param orig table The original list (table)
+--- @param extra table The list to merge in (table)
+--- @return table Merged list with unique values, original order preserved
+M.merge_unique = function(orig, extra)
+  local seen = {}
+  local result = {}
+  for _, v in ipairs(orig or {}) do
+    table.insert(result, v)
+    seen[v] = true
+  end
+  for _, v in ipairs(extra or {}) do
+    if not seen[v] then
+      table.insert(result, v)
+      seen[v] = true
+    end
+  end
+  return result
+end
+
 return M
