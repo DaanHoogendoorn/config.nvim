@@ -1,4 +1,6 @@
 local check_external_reqs = function()
+  vim.health.start 'External Requirements'
+
   local utils = {
     'git',
     'make',
