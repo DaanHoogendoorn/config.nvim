@@ -25,7 +25,12 @@ vim.api.nvim_create_user_command('LspConfigImport', function(command)
   vim.cmd(string.format('e %s', target_path))
 
   -- Format the buffer
-  require('conform').format { async = true, lsp_fallback = true, stop_after_first = true }
+  local ok, conform = pcall(require, 'conform')
+  if ok and conform and type(conform.format) == "function" then
+    conform.format { async = true, lsp_fallback = true, stop_after_first = true }
+  else
+    vim.notify("conform.nvim is not installed. Skipping formatting.", vim.log.levels.WARN)
+  end
   vim.cmd 'silent! w'
 
   -- Notify the user
