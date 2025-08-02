@@ -75,6 +75,33 @@ Update Treesitter parsers (recommended):
 
 ## Supported Language Servers
 
+---
+
+## Custom Project Root Markers
+
+You can customize how project roots are detected for each LSP server by creating a `.nvim-root-markers.json` file in your project directory. This file allows you to specify additional root marker files or folders for any supported LSP server, which will be merged with the default markers.
+
+**How it works:**
+- On startup, the config (see `lua/core/lsp.lua`) will automatically read `.nvim-root-markers.json` from your current working directory.
+- For each LSP server listed, any extra root markers you specify will be prepended (higher priority) to the default list for that server.
+- This is useful for monorepos, custom setups, or when the default markers are insufficient.
+
+**Example `.nvim-root-markers.json`:**
+```json
+{
+  "ts_ls": [".git", "package.json", "tsconfig.base.json"],
+  "lua_ls": [".luarc.json", ".nvim-root"]
+}
+```
+In this example, the TypeScript LSP (`ts_ls`) will also look for `tsconfig.base.json` as a project root, and the Lua LSP (`lua_ls`) will look for `.luarc.json` and `.nvim-root`.
+
+**Notes:**
+- Only servers listed in the JSON will be affected.
+- No code changes are needed; just add or edit `.nvim-root-markers.json` in your project root.
+
+---
+
+
 Custom LSP configs (in `lsp/`) for:
 
 - CSS (`cssls`, `css-variables-language-server`)
