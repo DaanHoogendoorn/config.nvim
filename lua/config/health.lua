@@ -1,3 +1,14 @@
+local extract_exe = function(cmd)
+  local exe = nil
+  if type(cmd) == 'table' then
+    exe = cmd[1]
+  elseif type(cmd) == 'string' then
+    exe = cmd
+  end
+
+  return exe
+end
+
 local check_external_reqs = function()
   vim.health.start 'External Requirements'
 
@@ -37,12 +48,7 @@ local check_lsp_executables = function()
       vim.health.warn(string.format("LSP config for '%s' has no 'cmd' field", name))
     else
       local cmd = config.cmd
-      local exe = nil
-      if type(cmd) == 'table' then
-        exe = cmd[1]
-      elseif type(cmd) == 'string' then
-        exe = cmd
-      end
+      local exe = extract_exe(cmd)
       if exe then
         if vim.fn.executable(exe) == 1 then
           vim.health.ok(string.format("LSP '%s': Found executable '%s'", name, exe))
@@ -68,12 +74,7 @@ local check_conform_executables = function()
     local name = info.name or info
     local fmt_info = conform.get_formatter_info and conform.get_formatter_info(name) or nil
     local cmd = fmt_info and fmt_info.command or nil
-    local exe = nil
-    if type(cmd) == 'table' then
-      exe = cmd[1]
-    elseif type(cmd) == 'string' then
-      exe = cmd
-    end
+    local exe = extract_exe(cmd)
     if exe then
       if vim.fn.executable(exe) == 1 then
         vim.health.ok(string.format("Formatter '%s': Found executable '%s'", name, exe))
