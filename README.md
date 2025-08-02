@@ -121,6 +121,19 @@ Custom LSP configs (in `lsp/`) for:
 
 ---
 
+## Health Checks
+
+You can run `:checkhealth` in Neovim to diagnose missing dependencies and configuration issues.
+
+This config provides custom health checks for:
+- Required external executables (e.g. git, make, rg, tmux, etc.)
+- All configured LSP servers (verifies their command is installed)
+- All formatters registered with conform.nvim
+
+If any required tool or command is missing, a warning will be shown with details.
+
+---
+
 ## Usage & Maintenance
 
 - **Install Plugins:** `:Lazy sync`

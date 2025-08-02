@@ -1,25 +1,17 @@
---[[
---
--- This file is not required for your own configuration,
--- but helps people determine if their system is setup correctly.
---
---]]
-
-local check_version = function()
-  local verstr = string.format('%s.%s.%s', vim.version().major, vim.version().minor, vim.version().patch)
-  if not vim.version.cmp then
-    vim.health.error(string.format("Neovim out of date: '%s'. Upgrade to latest stable or nightly", verstr))
-    return
+local extract_exe = function(cmd)
+  local exe = nil
+  if type(cmd) == 'table' then
+    exe = cmd[1]
+  elseif type(cmd) == 'string' then
+    exe = cmd
   end
 
-  if vim.version.cmp(vim.version(), { 0, 9, 4 }) >= 0 then
-    vim.health.ok(string.format("Neovim version is: '%s'", verstr))
-  else
-    vim.health.error(string.format("Neovim out of date: '%s'. Upgrade to latest stable or nightly", verstr))
-  end
+  return exe
 end
 
 local check_external_reqs = function()
+  vim.health.start 'External Requirements'
+
   local utils = {
     'git',
     'make',
@@ -42,6 +34,59 @@ local check_external_reqs = function()
   return true
 end
 
+local check_lsp_executables = function()
+  local utils = require 'config.utils'
+  local lsp_names = utils.get_config_lsp_names()
+  vim.health.start 'LSP Executable Checks'
+  for _, name in ipairs(lsp_names) do
+    local ok, config = pcall(require, 'lsp.' .. name)
+    if not ok then
+      vim.health.warn(string.format("Could not require lsp config for '%s'", name))
+    elseif type(config) ~= 'table' then
+      vim.health.warn(string.format("LSP config for '%s' did not return a table", name))
+    elseif not config.cmd then
+      vim.health.warn(string.format("LSP config for '%s' has no 'cmd' field", name))
+    else
+      local cmd = config.cmd
+      local exe = extract_exe(cmd)
+      if exe then
+        if vim.fn.executable(exe) == 1 then
+          vim.health.ok(string.format("LSP '%s': Found executable '%s'", name, exe))
+        else
+          vim.health.warn(string.format("LSP '%s': Could not find executable '%s'", name, exe))
+        end
+      else
+        vim.health.warn(string.format("LSP config for '%s' has invalid 'cmd' field", name))
+      end
+    end
+  end
+end
+
+local check_conform_executables = function()
+  local ok, conform = pcall(require, 'conform')
+  if not ok or not conform then
+    vim.health.warn 'conform.nvim is not installed'
+    return
+  end
+  vim.health.start 'Conform.nvim Formatter Executable Checks'
+  local formatters = conform.list_all_formatters and conform.list_all_formatters() or {}
+  for _, info in ipairs(formatters) do
+    local name = info.name or info
+    local fmt_info = conform.get_formatter_info and conform.get_formatter_info(name) or nil
+    local cmd = fmt_info and fmt_info.command or nil
+    local exe = extract_exe(cmd)
+    if exe then
+      if vim.fn.executable(exe) == 1 then
+        vim.health.ok(string.format("Formatter '%s': Found executable '%s'", name, exe))
+      else
+        vim.health.warn(string.format("Formatter '%s': Could not find executable '%s'", name, exe))
+      end
+    else
+      vim.health.warn(string.format("Formatter '%s': No command found to check", name))
+    end
+  end
+end
+
 return {
   check = function()
     vim.health.start 'Neovim Configuration'
@@ -49,7 +94,8 @@ return {
     local uv = vim.uv or vim.loop
     vim.health.info('System Information: ' .. vim.inspect(uv.os_uname()))
 
-    check_version()
     check_external_reqs()
+    check_lsp_executables()
+    check_conform_executables()
   end,
 }
