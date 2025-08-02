@@ -56,6 +56,36 @@ local check_lsp_executables = function()
   end
 end
 
+local check_conform_executables = function()
+  local ok, conform = pcall(require, 'conform')
+  if not ok or not conform then
+    vim.health.warn 'conform.nvim is not installed'
+    return
+  end
+  vim.health.start 'Conform.nvim Formatter Executable Checks'
+  local formatters = conform.list_all_formatters and conform.list_all_formatters() or {}
+  for _, info in ipairs(formatters) do
+    local name = info.name or info
+    local fmt_info = conform.get_formatter_info and conform.get_formatter_info(name) or nil
+    local cmd = fmt_info and fmt_info.command or nil
+    local exe = nil
+    if type(cmd) == 'table' then
+      exe = cmd[1]
+    elseif type(cmd) == 'string' then
+      exe = cmd
+    end
+    if exe then
+      if vim.fn.executable(exe) == 1 then
+        vim.health.ok(string.format("Formatter '%s': Found executable '%s'", name, exe))
+      else
+        vim.health.warn(string.format("Formatter '%s': Could not find executable '%s'", name, exe))
+      end
+    else
+      vim.health.warn(string.format("Formatter '%s': No command found to check", name))
+    end
+  end
+end
+
 return {
   check = function()
     vim.health.start 'Neovim Configuration'
@@ -65,5 +95,6 @@ return {
 
     check_external_reqs()
     check_lsp_executables()
+    check_conform_executables()
   end,
 }
