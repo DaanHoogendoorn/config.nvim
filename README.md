@@ -129,6 +129,27 @@ Custom LSP configs (in `lsp/`) for:
 - **Lint/Format:** `stylua .` (uses `.stylua.toml`)
 - **Test:** Launch Neovim and verify config/plugins load without errors
 
+### Custom Commands
+
+#### `:LspConfigImport {lsp_name}`
+
+Imports an LSP config file from the upstream [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) repository into your local `lsp/` directory.
+
+- **Usage:**  
+  `:LspConfigImport <lsp_name>`
+
+- **What it does:**  
+  - Downloads the config file for the given LSP server (e.g., `tsserver`, `gopls`) from the upstream repo.
+  - Saves it as `lsp/<lsp_name>.lua` in your config.
+  - Opens the file in a new buffer and formats it (if [conform.nvim](https://github.com/stevearc/conform.nvim) is installed).
+  - Notifies you of success or failure.
+
+- **Tab completion:**  
+  Offers completion for available LSP server names (based on your config).
+
+- **Example:**  
+  `:LspConfigImport lua_ls`
+
 ---
 
 ## License
