@@ -23,6 +23,39 @@ local check_external_reqs = function()
   return true
 end
 
+local check_lsp_executables = function()
+  local utils = require 'config.utils'
+  local lsp_names = utils.get_config_lsp_names()
+  vim.health.start 'LSP Executable Checks'
+  for _, name in ipairs(lsp_names) do
+    local ok, config = pcall(require, 'lsp.' .. name)
+    if not ok then
+      vim.health.warn(string.format("Could not require lsp config for '%s'", name))
+    elseif type(config) ~= 'table' then
+      vim.health.warn(string.format("LSP config for '%s' did not return a table", name))
+    elseif not config.cmd then
+      vim.health.warn(string.format("LSP config for '%s' has no 'cmd' field", name))
+    else
+      local cmd = config.cmd
+      local exe = nil
+      if type(cmd) == 'table' then
+        exe = cmd[1]
+      elseif type(cmd) == 'string' then
+        exe = cmd
+      end
+      if exe then
+        if vim.fn.executable(exe) == 1 then
+          vim.health.ok(string.format("LSP '%s': Found executable '%s'", name, exe))
+        else
+          vim.health.warn(string.format("LSP '%s': Could not find executable '%s'", name, exe))
+        end
+      else
+        vim.health.warn(string.format("LSP config for '%s' has invalid 'cmd' field", name))
+      end
+    end
+  end
+end
+
 return {
   check = function()
     vim.health.start 'Neovim Configuration'
@@ -31,5 +64,6 @@ return {
     vim.health.info('System Information: ' .. vim.inspect(uv.os_uname()))
 
     check_external_reqs()
+    check_lsp_executables()
   end,
 }
