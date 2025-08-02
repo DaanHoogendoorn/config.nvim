@@ -12,9 +12,9 @@ A modular, modern Neovim configuration with a focus on maintainability, plugin m
 
 - **Modular plugin management**: Each plugin in its own file under `lua/plugins/`
 - **Custom configuration**: Utilities, snippets, and helpers in `lua/config/`
-- **Comprehensive LSP support**: Custom LSP configs for many languages in `after/lsp/`
+- **Comprehensive LSP support**: Custom LSP configs for many languages in `lsp/`
 - **Modern UI/UX**: Statusline, colorscheme, notifications, and more
-- **AI/Completion**: Copilot, CopilotChat, and more
+- **AI/Completion**: Supermaven, OpenCode, and more
 - **Fuzzy finding/picking**: Powered by the snacks picker
 
 ---
@@ -50,31 +50,32 @@ Update Treesitter parsers (recommended):
 - `init.lua` – Entry point
 - `lua/plugins/` – Modular plugin specifications
 - `lua/config/` – Custom config, snippets, utilities
-- `after/lsp/` – Per-language LSP configuration. Also used for auto installation of LSP servers.
+- `lsp/` – Per-language LSP configuration. Also used for auto installation of LSP servers.
 
 ---
 
 ## Notable Plugins
 
-- **AI/Completion**: Copilot, CopilotChat, Supermaven
-- **UI/UX**: catppuccin, lualine, noice, dressing, blink, snacks
-- **Editing**: autopairs, autotag, surround, treesitter, treesj, highlightundo
+- **AI/Completion**: Copilot, Avante, Supermaven
+- **UI/UX**: catppuccin, lualine, noice, dressing, blink, flash, helpview, rendermarkdown, snacks
+- **Editing**: autopairs, autotag, surround, treesitter, treesj, highlightundo, quicker, sleuth, tinycodeaction
 - **Git**: gitsigns, octo
 - **Fuzzy Finder / Picker**: snacks
-- **LSP**: nvim-lspconfig, mason, fidget, sonarlint, lazydev
+- **LSP**: nvim-lspconfig, mason, fidget, lazydev
+- **LSP/Diagnostics**: SonarLint (plugin)
 - **Formatting/Linting**: conform, nvim-lint
 - **Snippets**: LuaSnip, friendly-snippets
 - **File Explorer**: mini.files
 - **Keybinding**: which-key
-- **Troubleshooting**: trouble, todo-comments, ts-comments
+- **Troubleshooting**: trouble, tscomments, tmuxnavigator
 
-(See `lua/plugins/` for the full list.)
+(See `lua/plugins/` for the full list. Snacks.nvim is a modern, recommended picker as of 2025.)
 
 ---
 
 ## Supported Language Servers
 
-Custom LSP configs for:
+Custom LSP configs (in `lsp/`) for:
 
 - CSS (`cssls`, `css-variables-language-server`)
 - Emmet (`emmet_language_server`)
@@ -87,7 +88,7 @@ Custom LSP configs for:
 - PHP (`phpactor`)
 - Rust (`rust_analyzer`)
 - Sass (`somesass_ls`)
-- SonarLint (`sonarlint-language-server`)
+
 - TypeScript (`ts_ls`)
 - YAML (`yamlls`)
 
