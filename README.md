@@ -56,7 +56,7 @@ Update Treesitter parsers (recommended):
 
 ## Notable Plugins
 
-- **AI/Completion**: Copilot, Avante, Supermaven
+- **AI/Completion**: Supermaven
 - **UI/UX**: catppuccin, lualine, noice, dressing, blink, flash, helpview, rendermarkdown, snacks
 - **Editing**: autopairs, autotag, surround, treesitter, treesj, highlightundo, quicker, sleuth, tinycodeaction
 - **Git**: gitsigns, octo
