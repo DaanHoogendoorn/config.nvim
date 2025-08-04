@@ -5,8 +5,22 @@ local extract_exe = function(cmd)
   elseif type(cmd) == 'string' then
     exe = cmd
   end
-
   return exe
+end
+
+-- Helper to load LSP config from nvim config dir, not project
+local function load_lsp_config_from_config_dir(name)
+  local config_dir = vim.fn.stdpath 'config'
+  local lsp_path = string.format('%s/lsp/%s.lua', config_dir, name)
+  local f = loadfile(lsp_path)
+  if not f then
+    return nil, string.format('LSP config file not found: %s', lsp_path)
+  end
+  local ok, result = pcall(f)
+  if not ok then
+    return nil, string.format('Error loading LSP config: %s', result)
+  end
+  return result, nil
 end
 
 local check_external_reqs = function()
@@ -39,9 +53,9 @@ local check_lsp_executables = function()
   local lsp_names = utils.get_config_lsp_names()
   vim.health.start 'LSP Executable Checks'
   for _, name in ipairs(lsp_names) do
-    local ok, config = pcall(require, 'lsp.' .. name)
-    if not ok then
-      vim.health.warn(string.format("Could not require lsp config for '%s'", name))
+    local config, err = load_lsp_config_from_config_dir(name)
+    if not config then
+      vim.health.warn(string.format("Could not load lsp config for '%s': %s", name, err or 'unknown error'))
     elseif type(config) ~= 'table' then
       vim.health.warn(string.format("LSP config for '%s' did not return a table", name))
     elseif not config.cmd then
