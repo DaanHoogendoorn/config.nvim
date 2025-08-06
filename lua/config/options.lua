@@ -80,3 +80,5 @@ vim.opt.completeopt = 'menu,noinsert,popup,fuzzy'
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
+
+vim.opt.fillchars = { eob = ' ' }
