@@ -40,4 +40,21 @@ M.merge_unique = function(orig, extra)
   return result
 end
 
+--- Get the path to the typescript server.
+--- @see lspconfig https://github.com/neovim/nvim-lspconfig/blob/f0c6ccf43997a1c7e9ec4aea36ffbf2ddd9f15ef/lua/lspconfig/util.lua#L89
+---
+--- @param root_dir string The root directory of the project
+--- @return string The path to the typescript server
+M.get_typescript_server_path = function(root_dir)
+  local project_roots = vim.fs.find('node_modules', { path = root_dir, upward = true, limit = math.huge })
+  for _, project_root in ipairs(project_roots) do
+    local typescript_path = project_root .. '/typescript'
+    local stat = vim.loop.fs_stat(typescript_path)
+    if stat and stat.type == 'directory' then
+      return typescript_path .. '/lib'
+    end
+  end
+  return ''
+end
+
 return M
