@@ -1,6 +1,7 @@
 return {
   'https://gitlab.com/schrieveslaach/sonarlint.nvim',
   event = 'BufRead',
+  ft = { 'php', 'javascript', 'typescript' },
   config = function()
     require('sonarlint').setup {
       server = {
@@ -17,6 +18,7 @@ return {
       filetypes = {
         'php',
         'javascript',
+        'typescript',
       },
     }
   end,
