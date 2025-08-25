@@ -32,6 +32,22 @@ return {
       mode = 'n',
     },
     {
+      '<leader>ad',
+      function()
+        require('opencode').prompt "Please add docblocks to this file: @buffer. If it's typescript, don't include the types as they are already in the code.."
+      end,
+      desc = 'Add docblocks to this file',
+      mode = 'n',
+    },
+    {
+      '<leader>ad',
+      function()
+        require('opencode').prompt "Please add docblocks to this selection: @selection. If it's typescript, don't include the types as they are already in the code.."
+      end,
+      desc = 'Add docblocks to this selection',
+      mode = 'v',
+    },
+    {
       '<leader>ao',
       function()
         require('opencode').ask '@selection: '
