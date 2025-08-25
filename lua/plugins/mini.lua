@@ -18,6 +18,11 @@ return {
         minifiles.open()
       end, { desc = '[E]xplore' })
 
+      vim.keymap.set('n', '<leader>E', function()
+        local _ = minifiles.close() or minifiles.open(vim.api.nvim_buf_get_name(0), false)
+        minifiles.reveal_cwd()
+      end, { desc = '[E]xplore' })
+
       local nsMiniFiles = vim.api.nvim_create_namespace 'mini_files_git'
       local autocmd = vim.api.nvim_create_autocmd
       local _, MiniFiles = pcall(require, 'mini.files')
