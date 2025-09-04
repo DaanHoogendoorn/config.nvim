@@ -40,6 +40,12 @@ return {
       win_options = {
         winbar = '%!v:lua.get_oil_winbar()',
       },
+      view_options = {
+        show_hidden = true,
+        is_always_hidden = function(name, _)
+          return name == '.git' or name == '..'
+        end,
+      },
     },
     dependencies = { { 'nvim-tree/nvim-web-devicons', opts = {} } },
     lazy = false,
