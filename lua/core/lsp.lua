@@ -75,14 +75,26 @@ vim.diagnostic.config {
       [vim.diagnostic.severity.HINT] = '󰌶 ',
     },
   } or {},
-  virtual_text = {
-    source = 'if_many',
-    spacing = 2,
-    current_line = true,
-    format = function(diagnostic)
-      return diagnostic.message
-    end,
-  },
+  virtual_text = function(namespace, bufnr)
+    local opts = {
+      source = 'if_many',
+      spacing = 2,
+      current_line = true,
+      format = function(diagnostic)
+        return diagnostic.message
+      end,
+    }
+
+    -- Disable current_line only for the `lazy` filetype (safe access)
+    local ok, ft = pcall(function()
+      return vim.bo[bufnr].filetype
+    end)
+    if ok and ft == 'lazy' then
+      opts.current_line = false
+    end
+
+    return opts
+  end,
 }
 
 vim.api.nvim_create_autocmd('LspAttach', {
