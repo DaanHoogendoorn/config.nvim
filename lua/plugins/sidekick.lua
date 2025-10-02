@@ -15,10 +15,9 @@ return {
       function()
         -- if there is a next edit, jump to it, otherwise apply it if any
         if not require('sidekick').nes_jump_or_apply() then
-          return '<C-w>' -- fallback to normal behavior
+          return
         end
       end,
-      expr = true,
       mode = { 'n' },
       desc = 'Goto/Apply Next Edit Suggestion',
     },
@@ -35,7 +34,7 @@ return {
       function()
         -- relative to cwd
         local relative_file_path = vim.fn.expand '%:~:.'
-        require('sidekick.cli').ask { name = 'opencode', msg = '@' .. relative_file_path .. ' ', submit = false }
+        require('sidekick.cli').send { name = 'opencode', msg = '@' .. relative_file_path .. ' ', submit = false }
       end,
       mode = { 'n', 'v' },
       desc = 'Sidekick ask buffer',
