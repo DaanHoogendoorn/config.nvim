@@ -33,4 +33,9 @@ require('lazy').setup({
     enabled = true,
     notify = false,
   },
+  dev = {
+    path = vim.fn.expand '~/Documents/Dev/',
+    patterns = { 'DaanHoogendoorn' },
+    fallback = true,
+  },
 })
