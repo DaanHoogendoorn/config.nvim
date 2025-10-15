@@ -43,12 +43,16 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'lazydev', 'path', 'snippets', 'buffer' },
+        default = { 'lsp', 'lazydev', 'px_to_rem', 'path', 'snippets', 'buffer' },
         providers = {
           lazydev = {
             name = 'lazydev',
             module = 'lazydev.integrations.blink',
             score_offset = 100,
+          },
+          px_to_rem = {
+            name = 'px_to_rem',
+            module = 'px-to-rem.integrations.blink_cmp',
           },
         },
       },
