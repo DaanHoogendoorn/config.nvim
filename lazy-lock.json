@@ -1,5 +1,5 @@
 {
-  "LuaSnip": { "branch": "master", "commit": "113f831c4dc5b8c4e97454a7f89bb21746fe6484" },
+  "LuaSnip": { "branch": "master", "commit": "eec1a84823e3fb9eb51705265cab77d9a970be20" },
   "blink.cmp": { "branch": "main", "commit": "327fff91fe6af358e990be7be1ec8b78037d2138" },
   "catppuccin": { "branch": "main", "commit": "af58927c55c9f3272c940ff02b3cee94a1249f26" },
   "conform.nvim": { "branch": "master", "commit": "fbcb4fa7f34bfea9be702ffff481a8e336ebf6ed" },
@@ -35,7 +35,7 @@
   "px-to-rem.nvim": { "branch": "main", "commit": "0943fd54cc7ddcca750314a30b0c110d35d91a29" },
   "quicker.nvim": { "branch": "master", "commit": "12a2291869a326424b1cbee937f4f80334433012" },
   "render-markdown.nvim": { "branch": "main", "commit": "475d3ad8cae486b0df6fc6050cf5b5ea1de42db8" },
-  "sidekick.nvim": { "branch": "main", "commit": "4a492da6e863d06b15e887be97dd43c50b76f11d" },
+  "sidekick.nvim": { "branch": "main", "commit": "81b2a85543c5fd7fd19ce29169c99665e672c666" },
   "snacks.nvim": { "branch": "main", "commit": "454ba02d69347c0735044f159b95d2495fc79a73" },
   "sonarlint.nvim": { "branch": "main", "commit": "1d49a469265e271f02b6efcf09c215e4560bd5fa" },
   "supermaven-nvim": { "branch": "main", "commit": "07d20fce48a5629686aefb0a7cd4b25e33947d50" },
