@@ -96,6 +96,11 @@ return {
           word = false,
           cyclic = true,
         },
+        augend.constant.new {
+          elements = { 'private', 'protected', 'public' },
+          word = true,
+          cyclic = true,
+        },
       },
     }
   end,
