@@ -35,9 +35,7 @@ return {
     {
       '<leader>ab',
       function()
-        -- relative to cwd
-        local relative_file_path = vim.fn.expand '%:~:.'
-        require('sidekick.cli').send { name = 'opencode', msg = '@' .. relative_file_path .. ' ', submit = false }
+        require('sidekick.cli').send { name = 'opencode', msg = '{file} ', submit = false }
       end,
       mode = { 'n', 'v' },
       desc = 'Sidekick ask buffer',
