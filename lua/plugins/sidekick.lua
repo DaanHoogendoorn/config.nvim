@@ -7,6 +7,9 @@ return {
         backend = 'tmux',
         enabled = true,
       },
+      prompts = {
+        docblocks = "Please add docblocks to {file}. If it's typescript, please omit the type declarations in the comment as they're already in the code.",
+      },
     },
   },
   keys = {
