@@ -60,7 +60,12 @@ end
 adapt_servers_from_root_markers_json()
 
 -- Start all the servers that have a config
-vim.lsp.enable(utils.get_config_lsp_names())
+-- TODO: Include copilot when we're on a neovim version with support for inline suggestions
+local servers = utils.get_config_lsp_names()
+servers = vim.tbl_filter(function(name)
+  return not name:match 'copilot'
+end, servers)
+vim.lsp.enable(servers)
 
 -- Set up diagnostics
 vim.diagnostic.config {
