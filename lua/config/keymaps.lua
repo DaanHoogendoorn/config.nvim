@@ -1,3 +1,5 @@
+local utils = require 'config.utils'
+
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
@@ -65,3 +67,48 @@ vim.keymap.set('n', '<leader>if', function()
 end, { desc = '[I]nsert [f]iglet', noremap = true, silent = true })
 
 vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
+
+-- open directory in oil
+vim.keymap.set('n', '<leader>sd', function()
+  local Snacks = require 'snacks'
+  local dirs = utils.get_directories { 'node_modules', 'vendor', 'vendor-prefixed', '.git' }
+
+  return Snacks.picker {
+    finder = function()
+      local items = {}
+      for i, item in ipairs(dirs) do
+        table.insert(items, {
+          idx = i,
+          file = item,
+          text = item,
+        })
+      end
+      return items
+    end,
+    format = function(item, _)
+      local file = item.file
+      local ret = {}
+      local a = Snacks.picker.util.align
+      local icon, icon_hl = Snacks.util.icon(file.ft, 'directory')
+      ret[#ret + 1] = { a(icon, 3), icon_hl }
+      ret[#ret + 1] = { ' ' }
+      ret[#ret + 1] = { a(file, 20) }
+
+      return ret
+    end,
+    preview = function(ctx)
+      if ctx.item.file then
+        Snacks.picker.preview.file(ctx)
+      else
+        ctx.preview:reset()
+        ctx.preview:set_title 'No preview'
+      end
+    end,
+    confirm = function(picker, item)
+      picker:close()
+
+      --open in oil
+      vim.cmd('Oil ' .. item.file)
+    end,
+  }
+end)

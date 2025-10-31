@@ -57,4 +57,32 @@ M.get_typescript_server_path = function(root_dir)
   return ''
 end
 
+M.get_directories = function(exclude_patterns)
+  local directories = {}
+
+  -- Allow passing a single string or a table of exclude patterns
+  if type(exclude_patterns) == 'string' then
+    exclude_patterns = { exclude_patterns }
+  end
+
+  -- Build fd command and append -E flags for each exclude pattern
+  local parts = { 'fd . --type directory' }
+  for _, pat in ipairs(exclude_patterns or {}) do
+    parts[#parts + 1] = '-E ' .. vim.fn.shellescape(pat)
+  end
+  local cmd = table.concat(parts, ' ')
+
+  local handle = io.popen(cmd)
+  if handle then
+    for line in handle:lines() do
+      table.insert(directories, line)
+    end
+    handle:close()
+  else
+    print('Failed to execute fd command: ' .. cmd)
+  end
+
+  return directories
+end
+
 return M
