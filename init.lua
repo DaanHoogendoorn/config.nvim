@@ -7,5 +7,3 @@ require 'config.usercommands'
 
 require 'core.lazy'
 require 'core.lsp'
-
-require 'config.lazyblock_info'
