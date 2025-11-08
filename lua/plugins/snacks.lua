@@ -16,6 +16,7 @@ return {
     bufdelete = { enabled = true },
     debug = { enabled = true },
     image = { enabled = true },
+    indent = { enabled = true, animate = { enabled = false } },
     input = { enabled = true },
     lazygit = { enabled = true },
     notify = { enabled = true },
