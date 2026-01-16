@@ -43,8 +43,19 @@ local tsserver_inlay_hints_settings = {
   includeInlayVariableTypeHints = true,
 }
 
+local vue_language_server_path = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server'
+local vue_plugin = {
+  name = '@vue/typescript-plugin',
+  location = vue_language_server_path,
+  languages = { 'vue' },
+  configNamespace = 'typescript',
+}
+
 return {
-  init_options = { hostInfo = 'neovim' },
+  init_options = {
+    hostInfo = 'neovim',
+    plugins = { vue_plugin },
+  },
   cmd = { 'typescript-language-server', '--stdio' },
   filetypes = {
     'javascript',
@@ -53,6 +64,7 @@ return {
     'typescript',
     'typescriptreact',
     'typescript.tsx',
+    'vue',
   },
   root_markers = { 'tsconfig.json', 'jsconfig.json', 'package.json', '.git' },
   handlers = {
@@ -97,6 +109,13 @@ return {
     end,
   },
   on_attach = function(client, bufnr)
+    local existing_capabilities = client.server_capabilities
+    if vim.bo.filetype == 'vue' then
+      existing_capabilities.semanticTokensProvider.full = false
+    else
+      existing_capabilities.semanticTokensProvider.full = true
+    end
+
     -- ts_ls provides `source.*` code actions that apply to the whole file. These only appear in
     -- `vim.lsp.buf.code_action()` if specified in `context.only`.
     vim.api.nvim_buf_create_user_command(bufnr, 'LspTypescriptSourceAction', function()
