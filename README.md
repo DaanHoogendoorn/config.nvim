@@ -65,7 +65,7 @@ Update Treesitter parsers (recommended):
 - **LSP/Diagnostics**: SonarLint (plugin)
 - **Formatting/Linting**: conform, nvim-lint
 - **Snippets**: LuaSnip, friendly-snippets
-- **File Explorer**: mini.files
+- **File Explorer**: oil
 - **Keybinding**: which-key
 - **Troubleshooting**: trouble, tscomments, tmuxnavigator
 
