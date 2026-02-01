@@ -9,17 +9,27 @@ return {
     vim.g.opencode_opts = {
       provider = {
         enabled = 'snacks',
-        snacks = {
-          -- Optional: configure snacks terminal if needed
-        },
       },
       -- Custom prompts - migrated from sidekick
-      cli = {
-        prompts = {
-          docblocks = "Please add concise docblocks to @buffer. If it's typescript, please omit the type declarations in the comment as they're already in the code.",
-        },
+      prompts = {
+        docblocks = "Please add concise docblocks to @buffer. If it's typescript, please omit the type declarations in the comment as they're already in the code.",
       },
     }
+
+    -- Set up terminal keymaps for OpenCode terminal only
+    vim.api.nvim_create_autocmd('TermOpen', {
+      pattern = '*',
+      callback = function(args)
+        local bufname = vim.api.nvim_buf_get_name(args.buf)
+        -- Check if this is an OpenCode terminal
+        if bufname:match 'opencode' then
+          vim.keymap.set('t', '<C-h>', '<cmd>wincmd h<cr>', { buffer = args.buf, desc = 'Go to Left Window' })
+          vim.keymap.set('t', '<C-j>', '<cmd>wincmd j<cr>', { buffer = args.buf, desc = 'Go to Lower Window' })
+          vim.keymap.set('t', '<C-k>', '<cmd>wincmd k<cr>', { buffer = args.buf, desc = 'Go to Upper Window' })
+          vim.keymap.set('t', '<C-l>', '<cmd>wincmd l<cr>', { buffer = args.buf, desc = 'Go to Right Window' })
+        end
+      end,
+    })
 
     -- Required for opts.events.reload
     vim.o.autoread = true
