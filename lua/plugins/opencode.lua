@@ -34,107 +34,70 @@ return {
     -- Required for opts.events.reload
     vim.o.autoread = true
 
+    -- Helper function to focus OpenCode terminal
+    local function focus_opencode()
+      vim.defer_fn(function()
+        local provider = require('opencode.config').provider
+        if provider and provider.get then
+          local win = provider:get()
+          if win and win.win and vim.api.nvim_win_is_valid(win.win) then
+            vim.api.nvim_set_current_win(win.win)
+            vim.cmd 'startinsert'
+          end
+        end
+      end, 100) -- Small delay to ensure action completes
+    end
+
     -- Keymaps migrated from sidekick
-    vim.keymap.set(
-      { 'n', 'x' },
-      '<leader>aa',
-      function()
-        require('opencode').toggle()
-      end,
-      { desc = 'Toggle OpenCode' }
-    )
+    vim.keymap.set({ 'n', 'x' }, '<leader>aa', function()
+      require('opencode').toggle()
+    end, { desc = 'Toggle OpenCode' })
 
-    vim.keymap.set(
-      { 'n', 'x' },
-      '<leader>ab',
-      function()
-        require('opencode').prompt '@buffer '
-      end,
-      { desc = 'Send buffer to OpenCode' }
-    )
+    vim.keymap.set({ 'n', 'x' }, '<leader>ab', function()
+      require('opencode').prompt '@buffer '
+      focus_opencode()
+    end, { desc = 'Send buffer to OpenCode' })
 
-    vim.keymap.set(
-      'x',
-      '<leader>av',
-      function()
-        require('opencode').prompt '@this '
-      end,
-      { desc = 'Send visual selection to OpenCode' }
-    )
+    vim.keymap.set('x', '<leader>av', function()
+      require('opencode').prompt '@this '
+      focus_opencode()
+    end, { desc = 'Send visual selection to OpenCode' })
 
-    vim.keymap.set(
-      { 'n', 'x' },
-      '<leader>ap',
-      function()
-        require('opencode').select()
-      end,
-      { desc = 'Select OpenCode prompt' }
-    )
+    vim.keymap.set({ 'n', 'x' }, '<leader>ap', function()
+      require('opencode').select()
+      focus_opencode()
+    end, { desc = 'Select OpenCode prompt' })
 
-    vim.keymap.set(
-      { 'n', 'x' },
-      '<leader>as',
-      function()
-        require('opencode').select()
-      end,
-      { desc = 'Select OpenCode action' }
-    )
+    vim.keymap.set({ 'n', 'x' }, '<leader>as', function()
+      require('opencode').select()
+      focus_opencode()
+    end, { desc = 'Select OpenCode action' })
 
-    vim.keymap.set(
-      { 'n', 't' },
-      '<C-.>',
-      function()
-        require('opencode').toggle()
-      end,
-      { desc = 'Toggle OpenCode focus' }
-    )
+    vim.keymap.set({ 'n', 't' }, '<C-.>', function()
+      require('opencode').toggle()
+    end, { desc = 'Toggle OpenCode focus' })
 
-    vim.keymap.set(
-      'n',
-      '<leader>aq',
-      function()
-        require('opencode').toggle()
-      end,
-      { desc = 'Close OpenCode' }
-    )
+    vim.keymap.set('n', '<leader>aq', function()
+      require('opencode').toggle()
+    end, { desc = 'Close OpenCode' })
 
     -- Optional: Enhanced features
     -- Operator support for adding ranges
-    vim.keymap.set(
-      { 'n', 'x' },
-      'go',
-      function()
-        return require('opencode').operator '@this '
-      end,
-      { desc = 'Add range to OpenCode', expr = true }
-    )
+    vim.keymap.set({ 'n', 'x' }, 'go', function()
+      return require('opencode').operator '@this '
+    end, { desc = 'Add range to OpenCode', expr = true })
 
-    vim.keymap.set(
-      'n',
-      'goo',
-      function()
-        return require('opencode').operator '@this ' .. '_'
-      end,
-      { desc = 'Add line to OpenCode', expr = true }
-    )
+    vim.keymap.set('n', 'goo', function()
+      return require('opencode').operator '@this ' .. '_'
+    end, { desc = 'Add line to OpenCode', expr = true })
 
     -- Scroll OpenCode from Neovim
-    vim.keymap.set(
-      'n',
-      '<S-C-u>',
-      function()
-        require('opencode').command 'session.half.page.up'
-      end,
-      { desc = 'Scroll OpenCode up' }
-    )
+    vim.keymap.set('n', '<S-C-u>', function()
+      require('opencode').command 'session.half.page.up'
+    end, { desc = 'Scroll OpenCode up' })
 
-    vim.keymap.set(
-      'n',
-      '<S-C-d>',
-      function()
-        require('opencode').command 'session.half.page.down'
-      end,
-      { desc = 'Scroll OpenCode down' }
-    )
+    vim.keymap.set('n', '<S-C-d>', function()
+      require('opencode').command 'session.half.page.down'
+    end, { desc = 'Scroll OpenCode down' })
   end,
 }
