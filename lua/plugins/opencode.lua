@@ -51,6 +51,7 @@ return {
     -- Keymaps migrated from sidekick
     vim.keymap.set({ 'n', 'x' }, '<leader>aa', function()
       require('opencode').toggle()
+      focus_opencode()
     end, { desc = 'Toggle OpenCode' })
 
     vim.keymap.set({ 'n', 'x' }, '<leader>ab', function()
