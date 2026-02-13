@@ -58,18 +58,19 @@ Update Treesitter parsers (recommended):
 
 - **AI/Completion**: Supermaven
 - **UI/UX**: catppuccin, lualine, noice, dressing, blink, flash, helpview, rendermarkdown, snacks
-- **Editing**: autopairs, autotag, surround, treesitter, treesj, highlightundo, quicker, sleuth, tinycodeaction
-- **Git**: gitsigns, octo
+- **Editing**: autopairs, autotag, surround, treesitter, treesj, highlightundo, quicker, sleuth, tinycodeaction, dial, colorizer
+- **Git**: gitsigns (GitHub integration via snacks picker)
 - **Fuzzy Finder / Picker**: snacks
-- **LSP**: nvim-lspconfig, mason, fidget, lazydev
+- **LSP**: mason, fidget, lazydev (nvim-lspconfig integrated at core level)
 - **LSP/Diagnostics**: SonarLint (plugin)
 - **Formatting/Linting**: conform, nvim-lint
 - **Snippets**: LuaSnip, friendly-snippets
 - **File Explorer**: oil
+- **Navigation**: harpoon
 - **Keybinding**: which-key
 - **Troubleshooting**: trouble, tscomments, tmuxnavigator
 
-(See `lua/plugins/` for the full list. Snacks.nvim is a modern, recommended picker as of 2025.)
+(See `lua/plugins/` for the full list of 43+ plugins. Snacks.nvim is a modern, recommended picker as of 2025.)
 
 ---
 
@@ -117,7 +118,11 @@ Custom LSP configs (in `lsp/`) for:
 - Sass (`somesass_ls`)
 
 - TypeScript (`ts_ls`)
+- Vue.js (`vue_ls`)
 - YAML (`yamlls`)
+- Astro (`astro`)
+- MDX (`mdx_analyzer`)
+- GitHub Copilot (`copilot`)
 
 ---
 
