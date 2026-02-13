@@ -10,6 +10,11 @@ return {
       prompts = {
         docblocks = "Please add concise docblocks to {file}. If it's typescript, please omit the type declarations in the comment as they're already in the code.",
       },
+      win = {
+        keys = {
+          prompt = false,
+        },
+      },
     },
   },
   keys = {
