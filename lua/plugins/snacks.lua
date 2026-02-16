@@ -27,7 +27,18 @@ return {
     toggle = { enabled = true },
     win = { enabled = true },
     words = { enabled = true },
-    zen = { enabled = true },
+    zen = {
+      enabled = true,
+      zoom = {
+        toggles = {},
+        center = false,
+        show = { statusline = true, tabline = true },
+        win = {
+          backdrop = false,
+          width = 0, -- full width
+        },
+      },
+    },
     dashboard = {
       enabled = true,
       autokeys = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -371,6 +382,13 @@ return {
         Snacks.picker.gh_pr { state = 'all' }
       end,
       desc = 'GitHub Pull Requests (all)',
+    },
+    {
+      '<leader>tz',
+      function()
+        Snacks.zen.zoom()
+      end,
+      desc = 'Toggle Zen Zoom',
     },
   },
   init = function()
