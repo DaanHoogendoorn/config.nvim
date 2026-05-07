@@ -1,9 +1,11 @@
 return {
-  { -- Highlight, edit, and navigate code
+  {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
+    lazy = false,
     build = ':TSUpdate',
-    opts = {
-      ensure_installed = {
+    init = function()
+      local ensure_installed = {
         'bash',
         'blade',
         'c',
@@ -25,79 +27,67 @@ return {
         'jsdoc',
         'regex',
         'rust',
-      },
-      -- Autoinstall languages that are not installed
-      auto_install = true,
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      indent = { enable = true, disable = { 'ruby' } },
-    },
-    config = function(_, opts)
-      -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-
-      opts.incremental_selection = {
-        enable = true,
-        keymaps = {
-          node_incremental = 'v',
-          node_decremental = 'V',
-        },
       }
+      require('nvim-treesitter').install(ensure_installed)
+    end,
+    config = function()
+      vim.api.nvim_create_autocmd('FileType', {
+        callback = function(args)
+          local ok = pcall(vim.treesitter.start, args.buf)
+          if ok then
+            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+        end,
+      })
 
-      ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup(opts)
+      -- Native incremental selection (replaces old plugin module)
+      vim.keymap.set('x', 'v', function()
+        require('vim.treesitter._select').select_parent(vim.v.count1)
+      end, { desc = 'Expand treesitter selection' })
 
-      -- There are additional nvim-treesitter modules that you can use to interact
-      -- with nvim-treesitter. You should go explore a few and see what interests you:
-      --
-      --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-      --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-      --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+      vim.keymap.set('x', 'V', function()
+        require('vim.treesitter._select').select_child(vim.v.count1)
+      end, { desc = 'Shrink treesitter selection' })
     end,
   },
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
-    after = 'nvim-treesitter',
+    branch = 'main',
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
     },
-    opts = {},
+    init = function()
+      -- Disable built-in ftplugin maps to avoid conflicts
+      vim.g.no_plugin_maps = true
+    end,
     config = function()
-      require('nvim-treesitter.configs').setup {
-        textobjects = {
-          select = {
-            enable = true,
-
-            -- Automatically jump forward to textobj, similar to targets.vim
-            lookahead = true,
-
-            keymaps = {
-              -- You can use the capture groups defined in textobjects.scm
-              ['af'] = '@function.outer',
-              ['if'] = '@function.inner',
-              ['aF'] = '@call.outer',
-              ['iF'] = '@call.inner',
-              ['aC'] = '@class.outer',
-              ['iC'] = { query = '@class.inner', desc = 'Select inner part of a class region' },
-              ['ic'] = '@comment.inner',
-              ['ac'] = '@comment.outer',
-              ['as'] = { query = '@scope', query_group = 'locals', desc = 'Select language scope' },
-              ['ia'] = { query = '@parameter.inner' },
-              ['aa'] = { query = '@parameter.outer' },
-              ['al'] = { query = '@loop.outer' },
-              ['il'] = { query = '@loop.inner' },
-              ['a='] = '@assignment.outer',
-              ['i='] = '@assignment.inner',
-              ['l='] = '@assignment.lhs',
-              ['r='] = '@assignment.rhs',
-              ['a,'] = '@parameter.outer',
-              ['i,'] = '@parameter.inner',
-            },
-            include_surrounding_whitespace = false,
-          },
+      require('nvim-treesitter-textobjects').setup({
+        select = {
+          lookahead = true,
+          include_surrounding_whitespace = false,
         },
+      })
+
+      local select = require('nvim-treesitter-textobjects.select')
+
+      local mappings = {
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['aF'] = '@call.outer',
+        ['iF'] = '@call.inner',
+        ['aC'] = '@class.outer',
+        ['iC'] = { query = '@class.inner', desc = 'Select inner part of a class region' },
+        ['ic'] = '@comment.inner',
+        ['ac'] = '@comment.outer',
       }
+
+      for key, query in pairs(mappings) do
+        local query_string = type(query) == 'table' and query.query or query
+        local desc = type(query) == 'table' and query.desc or ('Select ' .. query_string)
+        vim.keymap.set({ 'x', 'o' }, key, function()
+          select.select_textobject(query_string, 'textobjects')
+        end, { desc = desc })
+      end
     end,
   },
 }
