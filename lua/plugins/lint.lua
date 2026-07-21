@@ -5,11 +5,11 @@ return {
     local lint = require 'lint'
     lint.linters_by_ft = {
       -- markdown = { 'markdownlint' },
-      javascript = { 'eslint' },
-      typescript = { 'eslint' },
-      typescriptreact = { 'eslint' },
-      javascriptreact = { 'eslint' },
-      php = {},
+      javascript = { 'biomejs', 'eslint' },
+      typescript = { 'biomejs', 'eslint' },
+      typescriptreact = { 'biomejs', 'eslint' },
+      javascriptreact = { 'biomejs', 'eslint' },
+      php = { 'mago_lint' },
     }
 
     -- Create autocommand which carries out the actual linting
